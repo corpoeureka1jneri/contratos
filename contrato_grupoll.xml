@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <t t-name="l10n_ve_payroll.template_contracto_document">
+        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+        <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+     
+         <t t-call="web.html_container">
+             <t t-foreach="docs" t-as="o">
+                     <t t-if="o.is_labor_determined">
+                                         <style>
+                                             .boxed{
+                                                 padding: 1% 10%;
+                                                 text-align: justify;text-justify: inter-word;
+                                                 justify-content: space-between;
+                                             }
+                                             
+                                         </style>
+                                         <t t-call="l10n_ve_payroll.web_constancia_layout">
+                                             
+                                            <div class="boxed  justify-content-between">
+                                                <t t-if="o.is_indetermined">
+                                                    <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                                                    <t t-set="time_contract" t-value="'tiempo indeterminado'"/>
+                                                    <t t-set="articulo" t-value="'al artículo 61'"/>
+                                
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO DETERMINADO'"/>
+                                                    <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                                                    <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                                                    <t t-if="o.number_of_renovations&gt;0">
+                                                        <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                                                    </t>
+                                                </t>
+                                                <p align="center">
+                                                <strong><u>CONTRATO A TIEMPO DETERMINADO A DESTAJO</u></strong>
+                                                </p>
+                                                <p align="justify">
+                                                Entre la compañía <strong t-field="o.company_id.name"/>, <strong>RIF: <span t-field="o.company_id.rif"/></strong> inscrita en <span t-field="o.company_id.registrofiscal"/> 
+                                                empresa ubicada en <span t-field="o.company_id.street"/> <span t-field="o.company_id.city"/> Estado <span t-field="o.company_id.state_id.name"/>; representada en este Acto por 
+                                                <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>, titular de la cedula de identidad N° <span t-field="o.company_id.boss_rrhh.identification_id_2"/>
+                                                ; en su carácter de <strong t-field="o.company_id.boss_rrhh.job_id.name"/> de la Empresa <strong t-field="o.company_id.name"/>
+                                                y que a los efectos de este contrato se denominará  <strong>“LA EMPRESA”</strong>,por una parte y por otra <t t-if="o.employee_id.gender=='female'"> la Sra.</t><t t-else=""> el Sr. </t> <strong t-field="o.employee_id.name"/>,
+                                                titular de la cédula de identidad N°<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                                                se ha convenido en celebrar conforme a los artículos 62 y 112 del Decreto con Rango, Valor y Fuerza de Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores un
+                                                <strong><u>CONTRATO A TIEMPO DETERMINADO A DESTAJO</u></strong> ccontenido en las siguientes cláusulas: :  
+                                                <strong><u>PRIMERA:RECONOCIMIENTO DE LA RELACIÓN DE TRABAJO.</u>EL TRABAJADOR</strong> declara conocer a <strong>EL PATRONO</strong>, como una empresa de trabajo dedicada a <strong>IMPORTACION DE MAQUINARIAS &amp; EQUIPOS REPUESTOS AGRICOLAS</strong>, por tal razón declara que está subordinado a <strong>LA EMPRESA</strong>
+                                                <strong><u>SEGUNDA:</u> OBJETO DEL CONTRATO: EL TRABAJADOR</strong>, estará a disposición de <strong>LA EMPRESA</strong>, para cumplir con el trabajo para el cual es contratado a partir del 
+                                                <span t-esc="yas[o.date_start.weekday()] if o.date_start else ''"/> <span t-esc="o.date_start.strftime('%d') if o.date_start else ''"/> de <span t-esc="das[o.date_start.strftime('%m')] if o.date_start else ''"/> de <span t-esc="o.date_start.strftime('%Y') if o.date_start else ''"/>
+                                                con una temporalidad de (<strong t-esc="(o.date_end-o.date_start).days if o.date_end and o.date_start else 0"/>) dias.se obliga a prestar sus servicios a <strong>LA EMPRESA</strong> en el Centro de Servicios de la empresa
+                                                <strong t-field="o.company_id.name"/>,desempeñando el cargo de <strong t-field="o.job_id.name"/>, en el cual se dedicara a <span t-field="o.job_id.description"/>
+                                                <strong><u>TERCERA: REMUNERACION DEL TRABAJADOR </u></strong>Corresponde a <strong>EL TRABAJADOR</strong> por prestación de sus servicios bajo las condiciones descritas 
+                                                en el presente contrato, una remuneración de <span t-esc="o.numero_to_letras_contract(round(o.amount_total_usd,2))"/>  (<span t-esc="round(o.amount_total_usd,2)"/> USD) o su equivalente en Bolívares al día de la transacción por día trabajado, siendo este un contrato a destajo, 
+                                                la remuneración se genera producto de la obra, o labor que día a día realice el trabajador, esto supone, que para recibir la presente remuneración <strong>EL TRABAJADOR</strong> deberá asistir al Centro de Servicio, realizar las labores a las que en este acto se obliga y cumplir 
+                                                con todos los términos de la función que desempeñara. Este salario será pagado Quincenalmente por día trabajado.
+                                                <strong><u>CUARTA: MODALIDAD Y DURACION:  </u></strong> Debido a la naturaleza del <strong>CONTRATO DE TRABAJO A DESTAJO</strong> el mismo se da en función del artículo 112 del Decreto con Rango, Valor y Fuerza de Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores:
+                                                <i>“El salario se podrá estipular por unidad de tiempo, por unidad de obra, por pieza o a destajo, por tarea y por comisión. La forma de cálculo de salario no afecta la naturaleza de la relación de trabajo, sea este a tiempo indeterminado o a tiempo determinado”.</i>
+                                                <strong>QUINTA: HORARIO DE TRABAJO.  EL TRABAJADOR</strong> se compromete a prestar sus servicios <i>en el horario establecido de lunes a viernes de 08:00am hasta las 05:00pm, con un descanso diario de 1 hora: de 01:00pm a 02:00 pm,</i>
+                                                De acuerdo a la naturaleza del servicio queda entendido que de acuerdo a la ley y previa autorización del nivel supervisaría pertinente se podrá elaborar horas extras y horarios adicionales convenidos y aceptados por ambas partes en los periodos de zafra aprobado por <strong>EL PATRONO</strong>, <strong>EL TRABAJADOR</strong> expresamente declara conocer y aceptar los horarios.
+                                                
+                                            </p>
+                                            <p class="class-justify">
+                                                En  la ciudad <span t-field="o.company_id.city"/>, <span t-esc="datetime.date.today().strftime('a los %d dias del mes %B del año %Y')"/>.
+                                            </p>
+                                            <div class="row">
+                                                        <div class="col-5 text-center">
+                                                            <strong>EL PATRONO</strong>
+                                                        </div>
+                                                        <div class="col-2 text-center">
+                                                        </div>
+                                                        <div class="col-5 text-center">
+                                                            <strong>EL TRABAJADOR</strong>
+                                                        </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                    <div class="col-5 text-center">
+                                                        <hr/>
+                                                    </div>
+                                                    <div class="col-2 text-center">
+                                                    </div>
+                                                    <div class="col-5 text-center">
+                                                        <hr/>
+                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-5 text-center">
+                                                        <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>
+                                                    </div>
+                                                    <div class="col-2 text-center">
+                                                    </div>
+                                                    <div class="col-5 text-center">
+                                                        <strong t-field="o.employee_id.name"/>
+                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-5 text-center">
+                                                        <strong t-esc="o.company_id.boss_rrhh.identification_id_2 if o.company_id.boss_rrhh else ''"/>
+                                                    </div>
+                                                    <div class="col-2 text-center">
+                                                    </div>
+                                                    <div class="col-5 text-center">
+                                                        <strong t-field="o.employee_id.identification_id_2"/>
+                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-5 text-center">
+                                                        <strong t-field="o.company_id.rif"/>
+                                                    </div>
+                                                    <div class="col-2 text-center">
+                                                    </div>
+                                                    <div class="col-5 text-center">
+                                                    </div>
+                                            </div>
+                                            </div>
+                                        </t>
+                     </t>
+                     <t t-elif="o.company_id.id==2">
+                        <t t-call="l10n_ve_payroll.web_constancia_layout">
+                          <t t-call="l10n_ve_payroll.template_contracto_document_meiko"/>
+                        </t>
+                     </t>
+                    <t t-else="">
+
+                        <t t-call="l10n_ve_payroll.web_constancia_layout">
+                                             
+                            <div class="boxed  justify-content-between">
+                                 
+                                 <p t-if="o.is_labor_determined" align="center">
+                                   <strong><u>CONTRATO A TIEMPO DETERMINADO A DESTAJO</u></strong>
+                                 </p>
+                                <p align="justify" class="class-justify">
+                                   Entre nosotros, <strong t-field="o.company_id.name"/>, Bajo el N.º de Registro de Información Fiscal <span t-field="o.company_id.rif"/> inscrita en <span t-field="o.company_id.registrofiscal"/> 
+                                   empresa ubicada en <span t-field="o.company_id.street"/> <span t-field="o.company_id.city"/> Estado <span t-field="o.company_id.state_id.name"/>; representada en este Acto por 
+                                   <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>, venezolano(a), mayor de edad, civilmente 
+                                   hábil, <span t-esc="o.company_id.boss_rrhh.marital_2 if o.company_id.boss_rrhh else 'soltero(a)'"/>, con domicilio en <span t-field="o.company_id.boss_rrhh.street"/>, <span t-field="o.company_id.boss_rrhh.city_id.name"/> 
+                                   Edo <span t-field="o.company_id.boss_rrhh.state_id.name"/>, titular de la cedula de identidad N° <span t-field="o.company_id.boss_rrhh.identification_id_2"/>
+                                   por una parte, el cual para efectos de este CONTRATO se denominara <strong>“EL PATRONO”</strong>, y por otra <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                                   nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,mayor de edad,<t t-if="o.employee_id.discapacidad">
+                                       civilmente discapaz
+                                   </t><t t-else=""> civilmente habil</t>
+                                   <span t-field="o.employee_id.marital_2"/>,titular de la cédula de identidad N°<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                                   con domicilio en <span t-field="o.employee_id.city_id.name"/>,<span t-field="o.employee_id.state_id.name"/>,
+                                   quien en lo sucesivo y para los mismos efectos  se denominará <strong>“EL TRABAJADOR”</strong>, 
+                                   se ha convenido en suscribir el presente contrato de trabajo, con base al artículo  61 de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores 
+                                   (LOTTT), el cual se regirá por las siguientes cláusulas:  <strong>PRIMERA: “EL TRABAJADOR”</strong> desempeñara las funciones de <strong t-field="o.job_id.name"/> en el área de <strong t-field="o.department_id.name"/>. 
+                                   <strong>SEGUNDA: “EL TRABAJADOR”</strong>, declara que es su voluntad y decisión espontánea, lo que originó esta contratación, y se compromete a cumplir y actuar eficientemente en su cargo. 
+                                   <strong>TERCERA: “EL PATRONO”</strong> cancelará al <strong>“TRABAJADOR”</strong> la suma de <span t-esc="o.numero_to_letras_contract(round(o.amount_total_usd,2))"/> (<span t-esc="round(o.amount_total_usd,2)"/> USD) mensuales, o su equivalente en bolívares a la fecha del pago, pagaderos en 
+                                   partes iguales de <span t-esc="o.numero_to_letras_contract(round(o.amount_total_usd/2,2))"/> (<span t-esc="round(o.amount_total_usd/2,2)"/> USD) de forma quincenal, estos pagos podrán ser ajustados de acuerdo a los posibles incrementos otorgados por el 
+                                   Ejecutivo Nacional adecuándose a los otorgamientos formulados y aplicados por <strong>“EL PATRONO”</strong> los cuales considere necesario.  Ambas partes, de mutuo acuerdo asumen como beneficio 
+                                   el hecho de efectuar eventualmente pagos en divisa por cuanto esto constituye un beneficio en sí mismo, ya que se utiliza la divisa como indicador referencial sin que sea 
+                                   obligatorio efectuar pagos en dicha moneda.  <strong>CUARTA:</strong>   La jornada de trabajo del <strong>“EL TRABAJADOR”</strong> será de ocho (08) horas continuas, desde las ocho (8:00 am) de la mañana 
+                                   hasta las cinco (5:00 pm) de la tarde.  <strong>QUINTA: “EL TRABAJADOR”</strong> gozará de los siguientes beneficios: A) Bono de Alimentación (Cestaticket socialista) de 
+                                   <strong t-esc="o.numero_to_letras_contract(round(o.cesta_ticket,2))"/> (<strong t-esc="round(o.cesta_ticket,2)"/> Bs D) según lo establecido en Gaceta Oficial Extraordinaria N°6746 de fecha 1 de mayo de 2023.  
+                                   B) Demás beneficios que por concepto de derechos y obligaciones están consagrados en la ley.  
+                                   <strong>SÉXTA: “EL PATRONO”</strong> podrá dar por resuelto el presente contrato de pleno derecho cuando concurran cualquiera de las siguientes 
+                                   circunstancias: A) Inasistencias de <strong>“EL TRABAJADOR”</strong> según lo estipulado en el artículo 79 literal f de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores (LOTTT). 
+                                   B) Cualquier violación a las cláusulas en el presente contrato y lo estipulado en <strong>el artículo 79 de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores (LOTTT)</strong>.  
+                                   <strong>SEPTIMA:</strong> Queda entendido que las inasistencias de <strong>“EL TRABAJADOR”</strong> les serán descontadas de su salario en la primera quincena del mes siguiente al vencido. 
+                                   <strong>OCTAVA:</strong> Las funciones que desempeñará <strong>“EL TRABAJADOR”</strong> y los deberes que tendrá son de obligatorio cumplimiento y quedan expresamente descritos de la siguiente forma 
+                                   <span t-field="o.job_id.description"/>
+                                   <strong>NOVENA:</strong> Para todo aquello que no se encuentre especialmente previsto o acordado por las partes en el presente contrato, rigen las disposiciones de la Constitución de la República 
+                                   Bolivariana de Venezuela, de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores, y demás leyes orgánicas o especiales a las que haya lugar invocar para su aplicación. 
+                                   <strong>DECIMA:</strong> Ambas partes normalmente se acogen a las disposiciones legales del Código Civil y a Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores (LOTTT) de todo lo 
+                                   convenido en el presente contrato, cuyas condiciones sólo podrán ser modificadas por un nuevo contrato y eligen a la ciudad de Araure, como su domicilio especial para los efectos 
+                                   legales. Se hacen dos (2) ejemplares a un solo tenor y al mismo efecto, uno de los cuales se le entrega a <strong>“EL TRABAJADOR”</strong> y el otro queda en posesión de <strong>“EL PATRONO”</strong>. 
+                                   Anótese en el Libro de contratos.
+       
+                               </p>
+                               <p class="class-justify">
+                                 En <span t-field="o.company_id.city"/>, <span t-esc="datetime.date.today().strftime('el día %d del mes %B del año %Y')"/>.
+                               </p>
+                               <div class="row">
+                                         <div class="col-5 text-center">
+                                             <strong>EL PATRONO</strong>
+                                         </div>
+                                         <div class="col-2 text-center">
+                                         </div>
+                                         <div class="col-5 text-center">
+                                             <strong>EL TRABAJADOR</strong>
+                                         </div>
+                               </div>
+                               <div class="row mt-4">
+                                       <div class="col-5 text-center">
+                                           <hr/>
+                                       </div>
+                                       <div class="col-2 text-center">
+                                       </div>
+                                       <div class="col-5 text-center">
+                                           <hr/>
+                                       </div>
+                               </div>
+                               <div class="row">
+                                       <div class="col-5 text-center">
+                                           <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>
+                                       </div>
+                                       <div class="col-2 text-center">
+                                       </div>
+                                       <div class="col-5 text-center">
+                                           <strong t-field="o.employee_id.name"/>
+                                       </div>
+                               </div>
+                               <div class="row">
+                                       <div class="col-5 text-center">
+                                           <strong t-esc="o.company_id.boss_rrhh.identification_id_2 if o.company_id.boss_rrhh else ''"/>
+                                       </div>
+                                       <div class="col-2 text-center">
+                                       </div>
+                                       <div class="col-5 text-center">
+                                           <strong t-field="o.employee_id.identification_id_2"/>
+                                       </div>
+                               </div>
+                               <div class="row">
+                                       <div class="col-5 text-center">
+                                           <strong t-field="o.company_id.rif"/>
+                                       </div>
+                                       <div class="col-2 text-center">
+                                       </div>
+                                       <div class="col-5 text-center">
+                                       </div>
+                               </div>
+                            </div>
+                             
+                        </t>
+                    </t></t></t></t>
+     
+                    <t t-name="l10n_ve_payroll.template_contracto_document_meiko">
+                        <style>
+                            .boxed{
+                                padding: 1% 10%;
+                                justify-content: space-between;
+                            }
+                            
+                        </style>
+                        <div class="boxed  justify-content-between">
+                        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+
+                        <t t-if="o.is_indetermined">
+                            <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                            <t t-set="time_contract" t-value="'tiempo indeterminado'"/>
+                            <t t-set="articulo" t-value="'al artículo 61'"/>
+
+                        </t>
+                        <t t-else="">
+                            <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO DETERMINADO'"/>
+                            <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                            <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                            <t t-if="o.number_of_renovations&gt;0">
+                                <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                            </t>
+                        </t>
+                        <t t-if="o.is_labor_determined">
+                            <t t-set="articulo" t-value="'al artículo 63'"/>
+                        </t>
+                            <!-- <p class="text-left"><span t-esc="o.company_id.lawyer_ref.name if o.company_id.lawyer_ref else ''"/></p>
+                            <p class="text-left">Abogado</p>
+                            <p class="text-left">IPSA N°:<span t-field="o.company_id.num_ipsa"/></p> -->
+                        <br/>
+                        <t t-if="o.date_end">
+                            <t t-set="timeduration" t-value="o.date_end-o.date_start"/>
+                        <t t-set="meses" t-value="int(timeduration.days/30)"/>
+                        <t t-if="meses&gt;0">
+                            <t t-set="tiempoaescribir" t-value="str(meses)+' meses'"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="dias" t-value="timeduration.days"/>
+                            <t t-set="tiempoaescribir" t-value="str(dias)+' dias'"/>
+                        </t>
+                        </t>
+                        <t t-else="">
+                            <t t-set="tiempoaescribir" t-value="'Indefinido'"/>
+                        </t>
+                        
+                        <p t-if="o.is_labor_determined" align="center">
+                                          <strong><u>CONTRATO A TIEMPO DETERMINADO A DESTAJO</u></strong>
+                        </p>
+                        <p class="class-justify" align="justify">
+                            Entre nosotros, <strong t-field="o.company_id.name"/>, Bajo el N.º de Registro de Información Fiscal <span t-field="o.company_id.rif"/> inscrita en <span t-field="o.company_id.registrofiscal"/> 
+                            empresa ubicada en <span t-field="o.company_id.street"/> <span t-field="o.company_id.city"/> Estado <span t-field="o.company_id.state_id.name"/>; representada en este Acto por 
+                            <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>, venezolano(a), mayor de edad, civilmente 
+                            hábil, <span t-esc="o.company_id.boss_rrhh.marital_2 if o.company_id.boss_rrhh else 'soltero(a)'"/>, con domicilio en <span t-field="o.company_id.boss_rrhh.street"/>, <span t-field="o.company_id.boss_rrhh.city_id.name"/> 
+                            Edo <span t-field="o.company_id.boss_rrhh.state_id.name"/>, titular de la cedula de identidad N° <span t-field="o.company_id.boss_rrhh.identification_id_2"/>
+                            por una parte, el cual para efectos de este CONTRATO se denominara <strong>“EL PATRONO”</strong>, y por otra <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                            nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,mayor de edad,<t t-if="o.employee_id.discapacidad">
+                                civilmente discapaz
+                            </t><t t-else=""> civilmente habil</t>
+                            <span t-field="o.employee_id.marital_2"/>,titular de la cédula de identidad:<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                            con domicilio en <span t-field="o.employee_id.city_id.name"/>,<span t-field="o.employee_id.state_id.name"/>,  quien en lo sucesivo y para los mismos efectos  se denominará <strong>“EL TRABAJADOR”</strong>, 
+                            se ha convenido en suscribir el presente contrato de trabajo, con base al artículo  61 de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores 
+                            (LOTTT), el cual se regirá por las siguientes cláusulas:  <strong>PRIMERA: “EL TRABAJADOR”</strong> desempeñara las funciones de <strong t-field="o.job_id.name"/> en el área de <strong t-field="o.department_id.name"/>. 
+                            <strong>SEGUNDA: “EL TRABAJADOR”</strong>, declara que es su voluntad y decisión espontánea, lo que originó esta contratación, y se compromete a cumplir y actuar eficientemente en su cargo. 
+                            <strong>TERCERA: “EL PATRONO”</strong> cancelará al <strong>“TRABAJADOR”</strong> la suma de <span t-esc="o.numero_to_letras_contract(round(o.amount_total_usd,2))"/> (<span t-esc="round(o.amount_total_usd,2)"/> USD) mensuales, o su equivalente en bolívares a la fecha del pago, pagaderos en 
+                            partes iguales de <span t-esc="o.numero_to_letras_contract(round(o.amount_total_usd/2,2))"/> (<span t-esc="round(o.amount_total_usd/2,2)"/> USD) de forma quincenal, estos pagos podrán ser ajustados de acuerdo a los posibles incrementos otorgados por el 
+                            Ejecutivo Nacional adecuándose a los otorgamientos formulados y aplicados por <strong>“EL PATRONO”</strong> los cuales considere necesario.  Ambas partes, de mutuo acuerdo asumen como beneficio 
+                            el hecho de efectuar eventualmente pagos en divisa por cuanto esto constituye un beneficio en sí mismo, ya que se utiliza la divisa como indicador referencial sin que sea 
+                            obligatorio efectuar pagos en dicha moneda.  <strong>CUARTA:</strong>   La jornada de trabajo del <strong>“EL TRABAJADOR”</strong> será de ocho (08) horas continuas, desde las siete y treinta (7:30 am) de la mañana 
+                            hasta las cuatro (4:00 pm) de la tarde.  <strong>QUINTA: “EL TRABAJADOR”</strong> gozará de los siguientes beneficios: A) Bono de Alimentación (Cestaticket socialista) de 
+                            <strong t-esc="o.numero_to_letras_contract(round(o.cesta_ticket,2))"/> (<strong t-esc="round(o.cesta_ticket,2)"/> Bs D) según lo establecido en Gaceta Oficial Extraordinaria N°6746 de fecha 1 de mayo de 2023.  
+                            B) Demás beneficios que por concepto de derechos y obligaciones están consagrados en la ley.  
+                            <strong>SÉXTA: “EL PATRONO”</strong> podrá dar por resuelto el presente contrato de pleno derecho cuando concurran cualquiera de las siguientes 
+                            circunstancias: A) Inasistencias de <strong>“EL TRABAJADOR”</strong> según lo estipulado en el artículo 79 literal f de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores (LOTTT). 
+                            B) Cualquier violación a las cláusulas en el presente contrato y lo estipulado en <strong>el artículo 79 de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores (LOTTT)</strong>.  
+                            <strong>SEPTIMA:</strong> Queda entendido que las inasistencias de <strong>“EL TRABAJADOR”</strong> les serán descontadas de su salario en la primera quincena del mes siguiente al vencido. 
+                            <strong>OCTAVA:</strong> Las funciones que desempeñará <strong>“EL TRABAJADOR”</strong> y los deberes que tendrá son de obligatorio cumplimiento y quedan expresamente descritos de la siguiente forma 
+                            <strong>NOVENA:</strong> Para todo aquello que no se encuentre especialmente previsto o acordado por las partes en el presente contrato, rigen las disposiciones de la Constitución de la República 
+                            Bolivariana de Venezuela, de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores, y demás leyes orgánicas o especiales a las que haya lugar invocar para su aplicación. 
+                            <span t-field="o.job_id.description"/>
+                            <strong>DECIMA:</strong> Ambas partes normalmente se acogen a las disposiciones legales del Código Civil y a Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores (LOTTT) de todo lo 
+                            convenido en el presente contrato, cuyas condiciones sólo podrán ser modificadas por un nuevo contrato y eligen a la ciudad de Araure, como su domicilio especial para los efectos 
+                            legales. Se hacen dos (2) ejemplares a un solo tenor y al mismo efecto, uno de los cuales se le entrega a <strong>“EL TRABAJADOR”</strong> y el otro queda en posesión de <strong>“EL PATRONO”</strong>. 
+                            Anótese en el Libro de contratos.
+
+                        </p>
+                        <p class="class-justify">
+                          En <span t-field="o.company_id.street"/>, <span t-esc="datetime.date.today().strftime('el día %d del mes %B del año %Y')"/>.
+                        </p>
+                         
+                        
+                    </div>
+                    <div class="row">
+                              <div class="col-5 text-center">
+                                  <strong>EL PATRONO</strong>
+                              </div>
+                              <div class="col-2 text-center">
+                              </div>
+                              <div class="col-5 text-center">
+                                  <strong>EL TRABAJADOR</strong>
+                              </div>
+                    </div>
+                    <div class="row mt-4">
+                            <div class="col-5 text-center">
+                                <hr/>
+                            </div>
+                            <div class="col-2 text-center">
+                            </div>
+                            <div class="col-5 text-center">
+                                <hr/>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-5 text-center">
+                                <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>
+                            </div>
+                            <div class="col-2 text-center">
+                            </div>
+                            <div class="col-5 text-center">
+                                <strong t-field="o.employee_id.name"/>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-5 text-center">
+                                <strong t-esc="o.company_id.boss_rrhh.identification_id_2 if o.company_id.boss_rrhh else ''"/>
+                            </div>
+                            <div class="col-2 text-center">
+                            </div>
+                            <div class="col-5 text-center">
+                                <strong t-field="o.employee_id.identification_id_2"/>
+                            </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-5 text-center">
+                                <strong t-field="o.company_id.rif"/>
+                            </div>
+                            <div class="col-2 text-center">
+                            </div>
+                            <div class="col-5 text-center">
+                            </div>
+                    </div>
+
+        </t>
+
+        <t t-name="template_contracto_document_confidencialidad">
+
+            <t t-call="l10n_ve_payroll.web_constancia_layout">
+            <t t-foreach="docs" t-as="o">
+                    <style>
+                        .boxed{
+                            padding: 1% 10%;
+                            text-align: justify;text-justify: inter-word;
+                            justify-content: space-between;
+                        }
+                        
+                    </style>
+                        
+                    <div class="boxed  justify-content-between">
+                    <t t-if="o.is_indetermined">
+                        <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                        <t t-set="time_contract" t-value="'tiempo indeterminado'"/>
+                        <t t-set="articulo" t-value="'al artículo 61'"/>
+
+                    </t>
+                    <t t-else="">
+                        <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO DETERMINADO'"/>
+                        <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                        <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                        <t t-if="o.number_of_renovations&gt;0">
+                            <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                        </t>
+                    </t>
+                    <p align="justify">
+                      Entre, <strong t-field="o.company_id.name"/> inscrita en <span t-field="o.company_id.registrofiscal"/>, empresa  ubicada en <span t-field="o.company_id.street"/> <span t-field="o.company_id.city"/> Estado <span t-field="o.company_id.state_id.name"/>;
+                      inscrita ante el registro de información fiscal (RIF) bajo el Nro. <strong t-field="o.company_id.rif"/> representada en este Acto por
+                      <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-esc="o.company_id.boss_rrhh.name if o.company_id.boss_rrhh else ''"/>, venezolano(a), mayor de edad, civilmente 
+                      hábil, <span t-esc="o.company_id.boss_rrhh.marital_2 if o.company_id.boss_rrhh else 'soltero(a)'"/>, con domicilio en <span t-field="o.company_id.boss_rrhh.street"/>, <span t-field="o.company_id.boss_rrhh.city_id.name"/> 
+                      Edo <span t-field="o.company_id.boss_rrhh.state_id.name"/>, titular de la cedula de identidad N° <span t-field="o.company_id.boss_rrhh.identification_id_2"/>
+                      , quien para los efectos del presente contrato se denominará <strong>“LA EMPRESA”</strong> y por la otra
+                       <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                      nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,mayor de edad,<t t-if="o.employee_id.discapacidad">
+                          civilmente discapaz
+                      </t><t t-else=""> civilmente habil</t>,<span t-field="o.employee_id.marital_2"/>,
+                      con domicilio en <span t-field="o.employee_id.city_id.name"/>,<span t-field="o.employee_id.state_id.name"/>,
+                      titular de la cédula de identidad:<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                      quien en lo adelante se denominará <strong>“LA PARTE RECEPTORA”</strong>, han convenido en celebrar como en efecto lo hacen el presente Contrato, 
+                      el cual se regirá por las siguientes cláusulas: <strong>PRIMERA: LA PARTE RECEPTORA,</strong> se obliga a guardar <strong>estricta y absoluta confidencialidad</strong>
+                      de los procesos, productos, sistemas, protocolos, diseños, maquinas, servicios, data de clientes, inventarios, información administrativa relativa a los ingresos y egresos,
+                      a las transacciones habituales que realiza la empresa, igualmente en el caso de los proveedores de maquinarias, repuestos y bienes de capital en general, 
+                      así como también de toda la logística  que desarrolla y realiza <strong>LA EMPRESA, debiendo guardar secreto</strong> de las informaciones precitadas en esta cláusula y de 
+                      cualquier información afín existente a la fecha de la contratación y creadas posteriormente que formen parte de <strong>LA EMPRESA.  SEGUNDA: LA PARTE RECEPTORA</strong>, 
+                      no podrá después de culminada su relación con <strong>LA EMPRESA</strong> usar, divulgar, publicar, replicar o reproducir de forma desleal cualquier tipo de conocimiento, 
+                      información o practica corporativa, que vincule procesos productivos, de distribución, comercialización o transporte que revistan carácter de exclusividad de la sociedad 
+                      mercantil, por cuanto esto sería violatorio de los principios de velo corporativo y secreto corporativo de invocación y aplicación universal. 
+                      <strong>TERCERA: LA PARTE RECEPTORA,</strong> se obliga a considerar cualquier información que reciba de <strong>LA EMPRESA, como confidencial</strong>, y por tanto, 
+                      <strong>se compromete no comunicar, revelar o utilizar dicha información para fines distintos a los establecidos en el presente contrato o en el contrato 
+                      que dio lugar a su relación con la sociedad mercantil. CUARTA: LA EMPRESA,</strong> fundamenta el presente contrato de confidencialidad en el secreto 
+                      corporativo, en las disposiciones contenidas en la institución del velo corporativo que ha generado la elaboración de normas nacionales e internacionales 
+                      que regulan la materia y en el principio de la buena fe, que es un principio rector de todas las relaciones jurídicas y que debe presidir el comienzo, 
+                      el desarrollo, la ejecución y la terminación de las relaciones jurídicas en general, cualquier acto celebrado en ausencia o contravención de este principio 
+                      constituye un fraude a la ley y se encuentra sujeto al agotamiento de procedimientos, establecimiento de responsabilidades y sanciones correspondientes a las 
+                      que pudiera ser sometida <strong>LA PARTE RECEPTORA</strong> en virtud de lo establecido en el artículo 189 del Código Penal, así como del procedimiento civil
+                      al que haya lugar.<strong> QUINTA:</strong> El presente contrato no tiene fecha de culminación, por cuanto se trata de un acuerdo asumido entre las partes de 
+                      lapso indefinido ya que el compromiso de confidencialidad aquí suscrito tiene vigencia, durante la relación con <strong>LA EMPRESA</strong> y una vez terminada 
+                      la relación, siendo incluso de especial aplicación a partir de la culminación de la relación entre las partes. Las partes eligen como domicilio procesal 
+                      la Ciudad de <span t-field="o.company_id.city"/>, Estado <span t-field="o.company_id.state_id.name"/>, a cuya jurisdicción declaran someterse. 
+                      <strong>SEXTA:</strong> Se hacen dos ejemplares de un mismo tenor y a un solo efecto, en la Ciudad de <span t-field="o.company_id.city"/>, Estado <span t-field="o.company_id.state_id.name"/>, 
+                      a los <span t-esc="datetime.date.today().strftime('el día %d del mes %B del año %Y')"/>. 
+                    </p>
+                    <BR/>
+
+
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <strong>LA EMPRESA</strong>
+                        </div>
+                        <div class="col-6 text-center">
+                           <strong>LA PARTE RECEPTORA</strong>
+                        </div>
+                    </div>
+                    
+
+                </div>
+                </t>
+            </t> 
+</t>
+
+
+
+</odoo>

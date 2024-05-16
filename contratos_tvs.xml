@@ -1,0 +1,299 @@
+<t t-name="l10n_ve_payroll.template_contracto_document_bira">
+    <data>
+      <t t-call="web.html_container">
+        <!--<t t-call="web.basic_layout">-->
+        <t t-call="l10n_ve_payroll.web_constancia_layout">
+          <t t-foreach="docs" t-as="o">
+            <style>
+                .boxed{
+                    padding: 1% 10%;
+                    text-align: justify;text-justify: inter-word;
+                    justify-content: space-between;
+                }
+                p{
+                  text-align: justify;
+                  padding: 0 3rem
+                }
+                .underline{
+                  text-decoration: underline;
+                }
+                
+            </style>
+              <main>
+                <div style="padding: 0 5rem">
+                  <t t-set="das" t-value="{'1':'Enero','2':'Febrero','3':'Marzo','4':'Abril','5':'Mayo','6':'Junio','7':'Julio','8':'Agosto','9':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+                  <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+                  <div style="text-align: right">
+                    <strong style="border-top: 1px solid #000" t-field="o.company_id.lawyer_ref.name"/>
+                  </div>
+                  <p style="text-align: center">
+                      <strong>CONTRATO DE TRABAJO</strong>
+                  </p>
+                </div>
+                <p>
+                  Entre, la Sociedad Mercantil <span t-esc="o.env.company.name"/>, debidamente inscrita ante el Registro Mercantil Segundo del Estado <span t-esc="o.env.company.state_id.name"/>, <strong>Agosto de 2017</strong>, 
+                  bajo el <strong>N° 15</strong>, Tomo <strong>29-A RM2DOETG</strong> de los Libros de Comercio correspondientes, 
+                  titular del Registro de Informaciön Fiscal <strong t-esc="o.env.company.rif"/>, con domicilio fiscal en <strong t-esc="o.env.company.street"/>, <strong t-esc="o.env.company.street2"/>,
+                  Municipio <strong t-esc="o.env.company.municipality_id.name"/>, Estado <span t-esc="o.env.company.state_id.name"/>; quien en lo sucesivo y a los efectos del presente contrato, se denominá <strong>LA
+                  CONTRATANTE</strong>, representada en este acto por su Presidente, ciudadano <strong t-esc="'PIERANGELO LANCIA OLIVIERI'"/>, de nacionalidad
+                  Venezolana, Mayor de Edad, titular de la Cedula de Identidad Nro. V-19.911.544, por una parte; y por la otra, 
+                  el(la) una ciudadano(a):
+                </p>
+  
+                <table style="width: 90%; margin: 0 auto">
+                  <t t-set="nat" t-value="{'V': 'Venezolano', 'E': 'Extranjero'}"/>
+                  <tbody>
+                    <tr>
+                      <td colspan="2" style="text-align: center">Identificación Trabajador</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #000">Nombre: <span t-esc="o.employee_id.name"/></td>
+                      <td style="border: 1px solid #000">Nacionalidad: <span t-esc="nat.get(o.employee_id.nationality)"/></td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #000">Cédula:<span t-esc="o.employee_id.identification_id_2"/></td>
+                      <td style="border: 1px solid #000">Edo. Civil: <span t-esc="o.employee_id.marital_2"/></td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #000">Edad:</td>
+                      <td style="border: 1px solid #000"><span t-esc="o.employee_id.employee_age"/></td>
+                    </tr>
+                    <tr>
+                      <td style="border: 1px solid #000">Domicilio:</td>
+                      <td style="border: 1px solid #000"><span t-esc="o.employee_id.street"/></td>
+                    </tr>
+                  </tbody>
+                </table>
+  
+                <p>
+                  <t t-set="type_contract" t-value="'CONTRATO A TIEMPO DETERMINADO' if o.date_end else 'CONTRATO A TIEMPO INDETERMINADO'"/>
+                  quien a los efectos del presente documento se denominará <strong>EL CONTRATADO</strong>, se ha convenido, en celebrar, 
+                  conforme el articulo 62 de la <strong>LEY ORGÁNICA DEL TRABAJO, LOS TRABAJADORES Y TRABAJADORAS</strong>, el presente 
+                  <strong class="underline" t-esc="type_contract"/> que se regirá bajo las siguientes cláusulas:
+                </p>
+                <p>
+                  <strong class="underline">PRIMERA:</strong> <strong>PUESTO DE TRABAJO O CARGO. EL CONTRATADO</strong>, ha sido contratado para desempeñar el cargo 
+                  de <strong t-esc="o.job_id.name"/>, con las funciones siguientes: <strong t-esc="o.job_id.description"/>.
+                </p>
+                <p>
+                  Hacer uso adecuado y correcta disposición de los materiales, partes, insumos,
+                  herramientas, y equipos involucrados en el proceso productivo; Cumplir con los estándares de calidad de la marca
+                  y exceder las expectativas del cliente; Cumplir con los planes de entrenamiento teórico y práctico establecidos por la Empresa; Cumplir
+                  con los indicadores de Gestión pertinentes para el proceso de Producción; Ensamblar las piezas y partes de motocicletas y
+                  trimóviles siguiendo los lineamientos de producción establecidos por la Empresa; Hacer uso correcto de herramientas y equipos;
+                  Cumplir con los lineamientos de manejo correcto de piezas, partes y componentes; Hacer buen uso, cuidado y mantenimiento
+                  de equipos, herramientas y equipos de proteccion personal que le sean asignados por la Empresa; Cumplir a cabalidad las normas internas establecidas por la empresa; 
+                  Cumplir con la normativa establecida por Seguridad Industrial, entre otros. <strong>EL CONTRATADO</strong> se obliga a desempeñar el cargo 
+                  y las funciones descritas en esta Cláusula y conforme a las instrucciones que reciba de su superior inmediato; debiendo obedecer 
+                  las normas internas vigentes de la Empresa, y las establecidas en la Ley Orgánica del Trabajo, las
+                  Trabajadoras y Trabajadores y su Reglamento, las cuales declara conocer y en especial las siguientes:  
+                  a) La de prestar el servicio en las condiciones y términos pactados o que se desprendieren de la actividad productiva; 
+                  b) La de observar las órdenes e instrucciones que, sobre el modo de ejecución del trabajo le dicte la Empresa; 
+                  c) La de prestar fielmente sus servicios, con ánimo de colaboración y abstenerse de ejecutar prácticas desleales o
+                  divulgar informaciones sobre la actividad productiva que pudieren ocasionar perjuicios a la Empresa. El cargo antes señalado tiene carácter 
+                  enunciativo y, por tanto, de acuerdo con el literal "A" del articulo 57 de la Ley Orgánica del Trabajo, las
+                  Trabajadoras y los Trabajadores, <strong>EL CONTRATADO</strong>, tendrá la obligación de desempeñar cualquier otra labor que le fuere indicada 
+                  por <strong>LA CONTRATANTE</strong> o su superior inmediato, siempre y cuando sea compatible con sus fuerzas, aptitudes, estado o condición y sea 
+                  del mismo género de las que formen objeto de la ac1ividad a que se dedica <strong>LA CONTRATANTE</strong>.
+                </p>
+                
+                
+                <p>
+                  <strong class="underline">SEGUNDA:</strong> <strong>LUGAR DE PRESTACIÓN DE SERVICIOS. EL CONTRATADO</strong> se obliga a prestar sus 
+                  servicios para <strong>LA CONTRATANTE</strong>, de acuerdo a la Cláusula anterior, 
+                  en la siguiente dirección: <strong t-esc="o.env.company.street"/>, <strong t-esc="o.env.company.street2"/>. El lugar de Prestación de Servicios, podrá ser modificado por 
+                <strong>LA CONTRATANTE</strong> o sus Supervisores inmediatos, sin que esto pueda ser considerado como alteración de las Condiciones de Trabajo, 
+                  por cuanto los servicios se contratan en virtud de este señalamiento expreso.
+                </p>
+                
+                <p>
+                  <t t-if="o.date_end">
+                    <t t-set="duration_month_contract" t-value="o.date_end.month - o.date_start.month"/>
+                    <t t-set="duration_days_contract" t-value="o.date_end.day - o.date_start.day"/>
+                    <t t-set="duration_contract" t-value="str(duration_month_contract) + ' Meses' if duration_month_contract &gt; 0 else str(duration_days_contract) + ' Dias'"/>
+                    <strong class="underline">TERCERA:</strong> <strong>DURACIÓN RELACIÓN LABORAL:</strong> El lapso de duración del presente Contrato de Trabajo, será de
+                    <strong class="underline" t-esc="o.numero_to_letras_contract(duration_month_contract or duration_days_contract) + ' ' + duration_contract"/>, contados a partir del día <strong t-esc="(o.numero_to_letras_contract(o.date_start.day) + ' de ' + das.get(str(o.date_start.month)) + ' de ' + str(o.date_start.year) + o.date_start.strftime(' (%d/%m/%Y)')) if o.date_start else ''"/>; 
+                    por lo que su vencimiento tendrá lugar 
+                    el <strong t-esc="(str(o.numero_to_letras_contract(o.date_end.day)) + ' de ' + das.get(str(o.date_end.month)) + ' de ' + str(o.date_end.year) + o.date_end.strftime(' (%d/%m/%Y)')) if o.date_end else ''"/>. En los casos en los cuales <strong>LA CONTRATANTE</strong> necesite nuevamente los servicios de <strong>EL
+                    CONTRATADO</strong>, las partes suscribirán un nuevo contrato.
+                  </t>
+                  <t t-else="">
+                    <strong class="underline">TERCERA:</strong> <strong>DURACIÓN RELACIÓN LABORAL:</strong> El lapso de duración del presente Contrato de Trabajo, inciará
+                    el <strong t-esc="(o.numero_to_letras_contract(o.date_start.day) + ' de ' + das.get(str(o.date_start.month)) + ' de ' + str(o.date_start.year) + o.date_start.strftime(' (%d/%m/%Y)')) if o.date_start else ''"/>, por tiempo indeterminado.
+                  </t>
+                </p>
+  
+                
+                <p>
+                  <strong class="underline">CUARTA:</strong> <strong>JORNADA LABORAL</strong>. La duración de la jorada de trabajo sera de <strong t-esc="o.numero_to_letras_contract(o.resource_calendar_id.hours_per_day) + ' ('+str(int(o.resource_calendar_id.hours_per_day))+') ' + 'horas diarias'"/>, de Lunes a Viernes,
+                  comprendidas en el Horario siguiente: <strong t-esc="'De 08:00 a.m a 12:00 M y de 01:00 p.m a 05:00 p.m'"/>, con su respectiva hora de
+                  descanso entre jornada, de conformidad con lo establecido en los articulos 168 y 173 de la LOTTT, sin que pueda considerarse como Jornada extaordinaria. 
+                  En caso, que la misma se prolongue del tempo anterior, se convertiria en jornada extraordinaria; para lo cual, deberá <strong>EL CONTRATADO</strong> 
+                  recibir autorización expresa y escrita de <strong>LA CONTRATANTE</strong>, para dicha prórroga e igualmente para que se haga efectivo el
+                  pago de la misma. Semanalmente, quedan establecidos <strong t-esc="o.numero_to_letras_contract(o.resource_calendar_id.rest_days) + ' ('+str(o.resource_calendar_id.rest_days)+') ' + 'Días continuos de descanso'"/>, los dias Sábados y Domingos.
+                </p>
+                <p>
+                  <strong class="underline">QUINTA:</strong> <strong>SALARIO</strong>. El monto establecido como contraprestación por los servicios prestados por <strong>EL CONTRATADO</strong>, será la
+                  cantidad de <strong t-esc="o.numero_to_letras_contract(o.wage)"/> <strong>Dólares Norteamericanos (USD. <strong t-esc="o.wage"/>) mensuales</strong>, como moneda de cuenta. Dicho monto habrá de
+                  ser pagado por <strong>EL CONTRATANTE</strong>, en dinero en efectivo en moneda extranjera o en su equivalente en bolivares a tasa de
+                  cambio vigente que indique el Banco Central de Venezuela en la fecha en la que corresponda el pago. Ambas partes aceptan
+                  que el salario aquí acordado será el único que se tomará en consideración para hacer los cálculos derivados de la relación de
+                  trabajo, no pudiendo pretenderse, un salario distinto al aquí estipulado. Asimismo, <strong>EL CONTRATADO</strong> autoriza de forma
+                  expresa a <strong>LA CONTRATANTE</strong> para que los dias correspondientes a Prestaciones Sociales sean administrados por la
+                  empresa, por lo tanto, <strong class="underline">los Quince (15) dias de Prestaciones Sociales a que tiene derecho Trimestralmente será administrado por LA CONTRATANTE.</strong>
+                </p>
+                <p>
+                  <strong class="underline">SEXTA:</strong><strong> BENEFICIO DE ALIMENTACIÓN</strong>. Se establece el Cestaticket Socialista determinado por el Ejecutivo Nacional, como
+                  Beneficio de Alimentación de carácter no remunerativo, por la cantidad de <strong t-esc="o.numero_to_letras_contract(o.cesta_ticket)"/> <strong>Dólares Norteamericanos (USD. <strong t-esc="o.cesta_ticket"/>) mensuales</strong>, como moneda de cuenta, los cuales, serán cancelados en dinero en efectivo en moneda extranjera
+                  o en su equivalente en bolivares a la tasa de cambio vigente que indique el Banco Central de Venezuela en la fecha en la que
+                  corresponda el pago, hasta tanto la empresa no establezca otra modalidad de pago, de conformidad con lo estipulado en el                                                                                                       
+                  Decreto con Rango, Valor y Fuerza de Ley del Cestaticket Socialista para los Trabajadores y Trabajadoras, en concordancia
+                  con el Articulo 105 Numeral 2 de a LOTTT.
+                </p>
+                <p>
+                  <strong class="underline">SEPTIMA:</strong> <strong>BONO DE TRANSPORTE</strong>. EI monto establecido como contraprestación por bono de transporte por <strong>La
+                  CONTRATADA</strong>, será la cantidad de <strong t-esc="o.numero_to_letras_contract(o.bono_transporte)"/> <strong>Dólares Norteamericanos (USD. <strong t-esc="o.bono_transporte"/>) mensuales</strong>, como moneda de cuenta.
+                  Dicho monto habrá de ser pagado por <strong>EL CONTRATANTE</strong>, en dinero en efectivo en moneda extranjera o en su equivalente en bolivares a la tasa de cambio
+                  vigente que indique el Banco Central de Venezuela en la fecha en la que corresponda el pago,
+                  en concordancia con el Articulo 104 de a LOTTT.
+                </p>
+                <p>
+                  <strong class="underline">OCTAVA:</strong> <strong>MODALIDAD CONTRATACIÓN</strong>. Las partes acuerdan que el presente Contrato de Trabajo se ha convenido por
+                  <strong>TIEMPO DETERMINADO</strong> de acuerdo al Literal a) del Articulo 64 de la LOTTT, por encontrarse <strong>LA CONTRATANTE</strong> en fase
+                  de Instalación de la Planta Ensambladora; por tanto, las funciones a ejercer por <strong>EL CONTRATADO</strong> se ciñen a esta fase, este
+                  periodo estará dedicado al entrenamiento y preparación para el cargo, aunado al hecho que la permisología con la que cuenta <strong>LA CONTRATANTE</strong>
+                  por parte del Estado Venezolano, expira en fecha cercana a la fecha de culminación de este contrato.
+                </p>
+                <p>
+                  <strong class="underline">NOVENA:</strong> <strong>DE LOS DEMAS BENEFICIOS DE LEY. 1. VACACIONES. EL CONTRATADO </strong>al cumplir un (01) año de servicio
+                  ininterrumpido, disfrutará de quince (15) dias hábiles remunerados anuales por vacaciones, y en los años sucesivos recibirá un
+                  (01) dia adicional por cada año, hasta un máximo de quince (15) dias adicionales, de acuerdo a lo establecido en el articulo
+                  <strong>190 de la LOTTT. 2. BONO VACACIONAL. EL CONTRATADO</strong> percibirá por concepto de Bono Vacacional quince (15) días
+                  de salario normal y en los años sucesivos se adicionará un (01) día por año, hasta un máximo de treinta (30) días, según lo
+                  establecido en el articulo 192 de la LOTTT. <strong>3. UTILIDADES. EL CONTRATADO</strong>  recibirá por concepto de beneficios anuales
+                  laborales, el equivalente a treinta (30) dias de salario, los cuales, serán pagados los primeros quince días del mes de Diciembre,
+                  o en su defecto, en el mes posterior al cierre del ejercicio fiscal, de conformidad a lo establecido en el articulo 181 de la
+                  LOTTT.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA:</strong> <strong>DE LA CONFIDENCIALIDAD Y PROTECCIÓN DE DATOS.</strong> Se considera información confidencial cualquier dato financiero, comercial, estratégico, 
+                  negociación y/o cualquier información relacionada con las operaciones de negocios o condiciones financieras presentes y/o futuras, 
+                  lo cual abarca: información técnica, incluyendo patentes, derechos de autor, secretos comerciales y profesionales, información 
+                  personal de los clientes o empleados de la empresa, negociaciones entre la
+                  empresa y sus trabajadores, proveedores, técnicas, invenciones, conocimientos, documentos e instrumentos relacionados con servicios 
+                  actuales y futuros, entre otros, precios, planes y estrategias de comercialización, finanzas, datos e información
+                  financiera y contable, clientes, listas, datos de compra, planes de marketing, planes de negocios futuros
+                  y cualquier otra información que sea de propiedad y confidencial para <strong>LA CONTRATANTE</strong> y que se encuentre en documentos, faxes, teléfonos,
+                  correos electrónicos, computadores y cualquier otro sistema o medio de información. <strong>EL CONTRATADO</strong> se obliga de forma
+                  irrevocable a que toda Información que <strong>LA CONTRATANTE</strong> le proporcione con ocasión a este Contrato, a las funciones de su
+                  cargo u otros, tendrá el carácter de confidencial. <strong>EL CONTRATADO</strong> se obliga a guardar absoluto secreto de todo lo antes
+                  descrito, de las informaciones concernientes a datos e identificación de clientes, trabajadores, negociaciones, documentación
+                  facilitada, secretos industriales, procedimientos judiciales y/o administrativos, entre otros, a los cuales tendrá acceso durante la
+                  relación laboral. Asi como, toda información empresarial referida al ámbito industrial, comercial e interno de la empresa;
+                  cualquiera sea la forma o formato a través del cual se exprese dicha información, sea verbalmente o por escrito, sea que se
+                  contenga en documentos, escritos de otra naturaleza, discos, materal fotográfico, audiovisual, archivos computacionales o en cualquier otra forma, por 
+                  lo tanto, <strong>EL CONTRATADO</strong> no divulgará, publicará ni permitirá la publicación de todo o parte de la
+                  Información Confidencial, ni a sustraer documentación alguna de las instalaciones de <strong t-esc="o.env.company.name"/>, ya sea
+                  para su beneficio propio o que puedan ser perjudicial de alguna manera a los intereses de la empresa, durante la vigencia de
+                  la relaciön laboral y Veinte (20) años posteriores al vencimiento de este contrato. Asimismo, declara conocer y cumplir
+                  expresamente la legislación sobre Propiedad Intelectual y la Ley sobre Protección de datos, en particular conforme a lo
+                  dispuesto sobre Protección de la Vida Privada y Tratamiento de Datos Personales y las Políticas de Privacidad y de Seguridad
+                  de la Información de <strong>LA CONTRATANTE</strong> y sus clientes; por tanto, se compromete a: 
+                  a) Utilizar los datos de carácter personal a los que tenga acceso, única y exclusivamente para cumplir con sus
+                  obligaciones con <strong>LA CONTRATANTE</strong>; 
+                  b) no ceder en ningún caso a terceras personas los datos de carácter personal a los que tenga acceso, ni tan siquiera a efectos de su
+                  conservación. En caso de incumplimiento, acarreará responsabilidades civiles, pecuniarias y penales a que hubiere
+                  lugar, así como la finalización de manera unilateral del presente contrato.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA PRIMERA:</strong> <strong>EXCLUSIVIDAD. EL CONTRATADO</strong> se obliga y así lo acepta, a no trabajar, asesorar, o compartir
+                  conocimientos a otras personas naturales o júridicas que tengan interés o desarrollen el mismo rubro o actividad económica,
+                  similares o conexas que <strong>LA CONTRATANTE</strong>, durante la duración de este contrato. <strong>EL CONTRATADO</strong> no usará ni comunicará
+                  a terceros, incluso tras la terminación de este contrato, conocimientos técnicos que no sean de dominio público o secretos
+                  comerciales que haya llegado a conocer durante el jercicio de las actividades contractuales, de conformidad con la Cláusula
+                  Decima de este Contrato.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA SEGUNDA:</strong> <strong>AUSENCIA. EL CONTRATADO</strong> sólo podrá ausentarse dentro de la jornada laboral Justificadamente con
+                  previa notificación y autorización de su superior inmediato, de forma escrita y expresa. En caso de cualquier incapacidad
+                  laboral, accidente, enfermedad, estado de gravidez, caso fortuito o cualquier otro que le impida asistir o
+                  cumplir la jornada laboral deberá notificar de forma inmediata a su Superior, y las inasistencias a la jornada laboral como consecuencia de
+                  accidentes o enfermedades, deberán ser validados por el Instituto Venezolano de Seguros Sociales <strong> (IVSS)</strong> , en caso de
+                  incumplimiento de esta obligación se considerará causal suficiente para su despido justificado, según lo establecido en el
+                  articulo 79 de la LOTTT.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA TERCERA:</strong> <strong>HIGIENE Y SEGURIDAD INDUSTRIAL. EL CONTRATADO</strong> se obliga a cumplir cabalmente las normas y procedimientos
+                  establecidos en el Manual de Gestión de Seguridad, Higiene y ambiente <strong>(SHA)</strong>, así como las normas legales vigentes sobre la materia y relacionadas con la Higiene 
+                  y Seguridad industrial. Asimismo, <strong>EL CONTRATADO</strong> declara y acepta que ha sido notificada por <strong>LA CONTRATANTE</strong> sobre los posibles 
+                  riesgos por la ejecución de las actividades para las que fue contratada, y la prevención de estos, y a su vez, declara tener suficiente experiencia y los conocimientos 
+                  necesarios para manejar dichos riesgos y tomar las medidas preventivas necesarias, además, <strong>EL CONTRATADO</strong> se obliga a 
+                  informar inmediatamente a <strong>LA CONTRATANTE</strong> si observa alguna condición insegura dentro de la zona de trabajo. 
+                  <strong>EL CONTRATADO</strong>, declara conocer que las omisiones o imprudencias en que incurra, que afecten gravemente la seguridad o higiene en el trabajo, será
+                  causal para su despido justificado, tal como lo establece el literal e) del articulo 79 de la LOTTT.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA CUARTA:</strong> <strong>OTRAS CAUSAS DE TERMINACIÓN DEL CONTRATO.</strong> Además del vencimiento del término de este Contrato
+                  de Trabajo, convenido por las partes en la Cláusula Tercera, el mismo puede finalizar en forma unilateral y justificada por
+                  parte de <strong>LA CONTRATANTE</strong>, si <strong>EL CONTRATADO</strong> incurre en los hechos a que se refieren las causales previstas
+                  en el artículo 79 de la Ley Orgánica del Trabajo, las Trabajadoras y los Trabajadores e incurriere también en el incumplimiento del
+                  Reglamento Interno de Trabajo, el cual conoce y forma parte integral de este contrato, asi como de las demás normas previstas en la Legislación 
+                  Venezolana. En este sentido, <strong>EL CONTRATADO</strong> deberá abstenerse de incurrir en conducta inmoral en el trabajo, falta de probidad, vías de hecho,
+                  injurias o faltas de respeto a sus superiores, compañeros de trabajo, personal del Centro Comercial y/o Clientes. <strong>EL CONTRATADO</strong>
+                  conviene y acepta si la relación de trabajo finaliza antes de su término por los motivos anteriormente señalados, nada pudiera reclamar por indemizaciones a <strong>LA CONTRATANTE.</strong>.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA QUINTA:</strong> <strong>USO DE TECNOLOGÍA. EL CONTRATADO</strong> podrá utilizar computadoras, faxes
+                  y cualquier otro medio eléctronico que sea requerido para cumplir con sus labores durante la jornada laboral, 
+                  no podrá utilizar estos medios con fines de provecho personal o para terceros, y no podrá utilizar programas que no sean previamente autorizados, o vis1tar páginas que no guarden relación con el ámbito laboral. 
+                  El incumplimiento de lo establecido en la presente cláusula será causa de despido justificado, al considerarse una falta a las obligaciones que impone la relación laboral, de conformidad con lo establecido en 
+                  el artículo 79 de la Iey Orgánica del Trabajo, las Trabajadoras y los Trabajadores.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA SEXTA:</strong> <strong>EL CONTRATADO</strong> se obliga y asi lo acepta, a acusar recibo mediante su firma y con acotación de la respectiva
+                  fecha, de las comunicaciones o correspondencias que le entregue la empresa donde le indique instrucciones de trabajo,
+                  reclamos o amonestaciones, por incumplimiento de sus obligaciones laborales, en el caso que le sea aplicable, por responsabilidad de pérdidas o daños en bienes
+                  propiedades de la empresa u otros hechos.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA SEPTIMA:</strong> <strong>EL CONTRATADO</strong> exime de toda responsabilidad a <strong>LA CONTRATANTE</strong> por pagos de prestaciones,
+                  liquidaciones o salarios adeudados a el mismo con anterioridad a la presente contratación, por
+                  tanto <strong>LA CONTRATANTE</strong> no asume ninguna responsabilidad con <strong>EL CONTRATADO</strong> en lo concerniente 
+                  a las mencionadas deudas y acreencias ante ningún ente privado o público con anterioridad a la fecha de contratación especificada en la Cláusula Tercera
+                  de este contrato. 
+                  
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA OCTAVA:</strong> Ambas partes convienen que los instrumentos suscritos entre las partes
+                  con antelación a la presente contratación quedan sin efecto. Sólo se considerarán válidos los acuerdos y condiciones establecidos 
+                  en el presente contrato de Trabajo.
+                </p>
+                <p>
+                  <strong class="underline">DÉCIMA NOVENA:</strong> <strong>DOMICILIO ESPECIAL.</strong> Las partes convienen en elegir para todos los efectos 
+                  y concecuencias que pudieran derivarse de la aplicación e interpretación del presente Contrato de trabajo, 
+                  como domicilio especial la Ciudad de EI Tigre, Municipio Simón Rodriguez del Estado Anzoátegui, a cuya jurisdicción convienen someterse
+                  expresamente, sin perjuicio a lo establecido en el artículo 30 de la Ley Orgánica Procesal del Trabajo.
+                </p>
+                <p>
+                  <strong class="underline">VIGESIMA:</strong> <strong>DECLARACIÓN DE RECEPCIÓN DE EJEMPLAR DE CONTRATO. EL CONTRATADO</strong> declara expresamente haber recibido
+                  un ejemplar originado del presente Contrato de trabajo, asi como un ejemplar de las Normas Internas Vigentes de la empresa.
+                </p>
+                <p>
+                  Se hacen (2) ejemplares de un mismo tenor y a un sólo efecto, en <span t-field="o.env.company.city"/>, <span t-esc="'a los ' + str(datetime.date.today().day) + ' días del mes de ' + das.get(str(datetime.date.today().month)) + ' del ' + str(datetime.date.today().year)"/>.
+                </p>
+                <div style="height: 5rem"/>
+                <table style="width: 100%">
+                  <tr>
+                    <td style="text-align: center; width: 50%"><span style="width: 15rem; display: inline-block; border-top: 1px solid #000;">EL CONTRATANTE</span></td>
+                    <td style="text-align: center;"><span style="width: 15rem; display: inline-block; border-top: 1px solid #000;">EL CONTRATADO</span></td>
+                  </tr>
+                </table>
+              </main>  
+
+          </t>
+        </t> 
+          <!--</t>-->
+    </t>
+
+    </data>
+</t>

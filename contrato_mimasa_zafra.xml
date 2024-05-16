@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <t t-name="l10n_ve_payroll.template_contracto_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <!--<t t-call="web.basic_layout">-->
+                    <style>
+                        .boxed{
+                            padding: 1% 10%;
+                            text-align: justify;text-justify: inter-word;
+                            justify-content: space-between;
+                        }
+                        
+                    </style>
+                    <t t-call="l10n_ve_payroll.web_constancia_layout">
+                    <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+                    <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+                    <div class="boxed  justify-content-between">
+                    <t t-if="o.is_indetermined">
+                        
+                        <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                        <t t-set="time_contract" t-value="'tiempo indeterminado'"/>
+                        <t t-set="articulo" t-value="'al artículo 61'"/>
+
+                    </t>
+                    <t t-else="">
+                        <t t-set="titulo" t-value="'CONTRATO INDIVIDUAL DE TRABAJO'"/>
+                        <t t-set="dem_empleado" t-value="'EL CONTRATADO'"/>
+                        <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                        <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                        <t t-if="o.number_of_renovations&gt;0">
+                            <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                        </t>
+                    </t>
+                    <t t-if="o.is_labor_determined">
+                        <t t-set="articulo" t-value="'al artículo 63'"/>
+                    </t>
+                        <p align="center"> <strong><u><span t-esc="titulo"/></u></strong> </p>
+                    <br/>
+                    <p align="justify">
+                        Entre: <strong t-field="o.company_id.name"/> empresa inscrita ante el "<span t-field="o.company_id.registrofiscal"/>",
+                        representada en este acto por <strong>CHAORONG WU,</strong> Extranjero, de nacionalidad China,mayor de edad,
+                        de estado civil soltero, titular de la cédula de identidad No. E-82.278.612, domiciliado en Turén Estado Portuguesa, civilmente hábil,
+                        parte de ésta que para los efectos del presente contrato se denominará por una parte a quien actúa en su carácter de <strong>PRESIDENTE “EL EMPLEADOR” </strong>
+                        encontrándose ampliamente facultado por los Estatutos que rigen la empresa ,  y por la otra
+                        <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                        nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,mayor de edad,
+                        con estado civil <span t-field="o.employee_id.marital_2"/>,titular de la cédula de identidad:<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                        domiciliada en 
+                        <span t-field="o.employee_id.city_id.name"/>,<span t-field="o.employee_id.state_id.name"/>, y <t t-if="o.employee_id.discapacidad">
+                            civilmente discapaz
+                        </t><t t-else=""> civilmente habil</t>,quien para los efectos del presente documento se denominará  "<strong t-esc="dem_empleado"/>",
+                        se ha convenido a celebrar el <u> presente CONTRATO DE TRABAJO A <span t-esc="time_contract.upper()"/></u>,
+                        que comprende el periodo <strong> desde <span t-esc="o.date_start.strftime('%d') if o.date_start else ''"/> de <span t-esc="das[o.date_start.strftime('%m')] if o.date_start else ''"/> de <span t-esc="o.date_start.strftime('%Y') if o.date_start else ''"/>.
+                        , hasta el <span t-esc="yas[o.date_end.weekday()] if o.date_end else ''"/> <span t-esc="o.date_end.strftime('%d') if o.date_end else ''"/> de <span t-esc="das[o.date_end.strftime('%m')] if o.date_end else ''"/> del  <span t-esc="o.date_end.strftime('%Y') if o.date_end else ''"/>,</strong>
+                        de conformidad con lo preceptuado en los artículos 59 y 61 de la Ley Orgánica del Trabajo, los Trabajadores y las Trabajadoras, el cual se regirá por las siguientes cláusulas:
+                    </p>
+                    <p align="center"> <strong><u>DE LA NATURALEZA DEL CONTRATO</u></strong> </p>
+                    <p align="justify">
+                        <strong>PRIMERA: "EL TRABAJADOR",</strong> celebra el presente Contrato a <span t-esc="time_contract"/> con el "<strong t-esc="dem_empleado"/>",
+                        virtud de su experiencia y condiciones profesionales particulares, considerando que, requiere de "<strong t-esc="dem_empleado"/>" contratar sus servicios profesionales, para realizar sus funciones indicadas en las cláusulas Segunda y por el Tiempo determinado en la cláusula Tercera.
+                        
+                        <!--<t t-if="not o.is_indetermined">-->
+                        <!--    hasta el día <strong t-esc="o.date_end.strftime('%d/%m/%Y') if o.date_end else ''"/>, fecha en la que cesa el contrato de trabajo a tiempo determinado,debido a que en este tiempo existe la necesidad del servicio por motivos que en esta época del año se incremente las ventas del producto comercial de la empresa y la necesidad del servicio es por el tiempo específico, por lo que debido a la naturaleza del servicio nos obliga a contratar personal adicional a nuestros cargos y puestos de trabajo preestablecidos.-->
+                        <!--</t>.Se requiere de la presencia diaria en la empresa, mantener una conducta acorde a las costumbres, usos locales y de equidad, especialmente buena presencia.-->
+                        <!--<t t-if="not o.is_indetermined">-->
+                        <!--    Asimismo, podrá ser prorrogado cuando la circunstancia que justificó su celebración se extendiere por un tiempo superior al previsto al momento de la celebración de este contrato o cuando surgieren nuevas circunstancias de similar naturaleza.-->
+                        <!--</t>-->
+                    </p>
+                    <p align="center"> <strong><u>DEL OBJETO DEL CONTRATO</u></strong> </p>
+                    <p align="justify">
+                        <strong>SEGUNDA: "EL CONTRATADO O CONTRATADA"</strong> se compromete a prestar sus servicios a <strong t-field="o.company_id.name"/>,bajo su dependencia, como 
+                        <strong t-field="o.job_id.name"/> <strong>en el área de  <span t-field="o.department_id.name"/></strong>
+                        para lo cual, se obliga a realizar las actividades laborales conforme al cargo a desempeñar, que se describe a continuación:
+                        <strong>
+                        <span align="justify" t-field="o.job_id.description"/>
+                        </strong>
+                        descritas en la presente clausula son de carácter enunciativas y no taxativas, 
+                        pudiendo <strong>“EL EMPLEADOR”</strong> encomendar actividades adicionales a <strong>“EL TRABAJADOR”</strong>, cuando la operatividad de la empresa así lo requiera siempre y cuando no pongan en riesgo su salud o la de otros trabajadores; 
+                        por lo tanto no se entenderá como acoso laboral la exigencia que realice <strong>“EL EMPLEADOR”</strong> a <strong>“EL TRABAJADOR”</strong> en cuanto al cumplimiento de las funciones anteriormente expuestas, dentro de los límites de la jornada convenida.
+                        
+                    </p>
+                    <p align="center"> <strong><u>DEL LUGAR Y JORNADA DE TRABAJO</u></strong> </p>
+                    <p align="justify">
+                        <strong>TERCERA: LUGAR DE LA PRESTACIÓN DEL SERVICIO. “EL TRABAJADOR” </strong>presta sus servicios para <strong>"EL EMPLEADOR”</strong> en la sede de la entidad de trabajo ubicada en la
+                        <strong t-field="o.company_id.street"/>,<strong t-field="o.company_id.city"/>,<strong t-field="o.company_id.state_id.name"/> ó en el lugar asignado por <strong>"EL EMPLEADOR”.</strong>
+                    </p>
+                    <p align="justify">
+                        <strong>CUARTA: JORNADA DE TRABAJO.</strong>
+                        La jornada de trabajo pactada con <strong>“EL TRABAJADOR”</strong> de acuerdo a la naturaleza del cargo es desarrollado de lunes a viernes de 07:00 A.M a 03:00 P.M, 
+                        con descanso inter jornada de una (1) hora, específicamente desde las 12:00 m hasta la 1:00 P.M. con dos (02) días de descanso semanal, específicamente los días sábados y domingos, 
+                        sin embargo, los mismos pueden ser rotativos conforme al programa de horario realizado por la gerencia. 
+                        <strong><u>PARRAFO UNICO:</u></strong> Queda establecido y así lo acepta <strong>“EL TRABAJADOR”</strong> que dicho horario pactado puede ser rotado entre los demás turnos de la entidad de trabajo de acuerdo a las necesidades o requerimientos de la misma, 
+                        así como los días de descanso, previa notificación a <strong>“EL TRABAJADOR”</strong>, todo ello, a los fines de garantizar la prestación efectiva y eficiente del servicio ofrecido por <strong>“EL EMPLEADOR”.</strong> 
+                        En ningún caso la jornada de trabajo será superior a los límites diarios y semanales dispuestos en la Constitución y en la ley.
+                        
+                        
+                        
+                        <!--<span t-esc="dem_empleado"/>EL TRABAJADOR se obliga a prestar sus servicios en condiciones de eficiencia, honradez, dentro de la jornada diaria, en los turnos y dentro de las horas señaladas por LA COMPAÑÍA, pudiendo éste hacer cambios o ajustes por razones justificadas, asi como, se compromete a prestar a LA COMPAÑÍA los servicios descritos en la Cláusula Segunda del presente contrato en la sede de LA COMPAÑÍA, ubicada en: -->
+                        <!--<span t-field="o.company_id.street"/>.. El horario de trabajo de <span t-esc="dem_empleado"/> establecido entre las partes. Con un descanso interjornada de <span t-field="o.resource_calendar_id.interjournal_rest"/> hora y teniendo <span t-field="o.resource_calendar_id.rest_days"/> días de descansos.-->
+                        <!--<t t-if="o.resource_calendar_id">-->
+                        <!--    De <span t-esc="das[o.resource_calendar_id.attendance_ids[:1].dayofweek]"/> a <span t-esc="das[o.resource_calendar_id.attendance_ids[-1].dayofweek]"/>: <span t-esc="o.resource_calendar_id.attendance_ids[:1].day_period"/> 8:00 AM. A 12:00 M tarde 1:00 PM. A 5:00 PM y disfrutara de una hora  de descanso desde las 12:00 M a 1:00 PM-->
+                        <!--</t>-->
+                    </p>
+                    <p align="center"> <strong><u>QUINTA: DE LA REMUNERACION, OTROS BENEFICIOS Y SU FORMA DE PAGO</u></strong> </p>
+                    <p align="justify">
+                        <strong>QUINTA: <span t-field="o.company_id.name"/></strong>,  pagara a EL CONTRATADO, por la prestación de sus servicios, 
+                        un sueldo mensual de  <strong><span t-esc="o.numero_to_letras_contract(round(o.wage,2))"/> Bolívares, (<span t-esc="round(o.wage,2)" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> Bs.) , en CUATRO  CUOTAS SEMANALES, DE <span t-esc="o.numero_to_letras_contract(round((o.wage/30)*7,2))"/>  (<span t-esc="round((o.wage/30)*7,2)" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/>Bs), 
+                        cada una,</strong> cantidad que se acreditara mediante un abono en la cuenta bancaria al nombre del <strong>“CONTRATADO”</strong>, suma de las cuales se efectuaran las retenciones que corresponda por concepto  de seguridad social establecidas en las leyes vigentes, el <strong>“CONTRATADO”</strong>, 
+                        percibirá el beneficio de alimentación  previsto en la ley del Cestaticket Socialista  para los Trabajadores y Trabajadoras, cuyo valor mensual será el equivalente a <strong><span t-esc="o.numero_to_letras_contract(round(o.cesta_ticket,2))"/> Bolívares, (<span t-esc="round(o.cesta_ticket,2)" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> Bs.)</strong>. 
+                        Según la Gaceta Oficial Extraordinaria 6.746, del 1° de mayo de 2023, establecido por el Ejecutivo Nacional.
+                    </p>
+                    <p align="justify">
+                        <strong>SEXTA: TRABAJO EN DÍAS FERIADOS. “EL TRABAJADOR” </strong>declara conocer y entender que de acuerdo a lo establecido en el artículo 185 de la Ley Orgánica del Trabajo, Los Trabajadores y Las Trabajadoras, concatenado con el artículo 17 de su Reglamento Parcial (2013), Literal “g”, la entidad de trabajo
+                        <strong t-field="o.company_id.name"/><strong><u>considera no susceptible de interrupción</u></strong>razón por la cual será obligatorio asistir a su jornada de trabajo en días feriados, salvo que dicho día coincida con sus días de descanso. En caso que <strong>“EL TRABAJADOR”</strong> falte a su jornada de trabajo bajo el argumento que se trataba de un día feriado se considerara como falta injustificada.  
+                    </p>
+                    <!--<p align="justify">-->
+                    <!--    <strong>SEPTIMA: BONIFICACIONES DE CARÁCTER NO SALARIAL</strong>En ocasión, a las dificultades de que se vive en el país y aun cuando <strong>EL EMPLEADOR</strong> en pleno conocimiento de las condiciones de vida que existen actualmente, acuerda otorgar un monto de dinero <strong>MENSUAL</strong> de <strong><span t-esc="o.numero_to_letras_contract(round(o.complemento,2))"/> DOLARES AMERICANOS, (<span t-esc="round(o.complemento,2)" t-options="{&quot;widget&quot;: &quot;float&quot;, &quot;precision&quot;: 2}"/> $),pagaderos del 15 al 20 de cada mes</strong>, -->
+                    <!--    que tiene <strong>POR CONCEPTO  BONO DE ALIMENTACION</strong> para que <strong>“EL TRABAJADOR”</strong> compense los gastos   de alimentación, tomando en consideración que los pagos efectuados para tal fin, indispensables para la prestación de servicio de <strong>“EL TRABAJADOR”</strong> en ocasión a las funciones que -->
+                    <!--    realiza y las condiciones expuestas anteriormente. En este sentido, <strong>AMBAS PARTES</strong> acuerdan que, estimando el valor al momento de la suscripción del presente contrato <strong>“EL TRABAJADOR”</strong> recibirá un monto de dinero bonificación que será otorgada en dinero electrónico o en efectivo y que deberá ser destinada única-->
+                    <!--    y exclusivamente para que <strong>“EL TRABAJADOR”</strong> realice la adquisición de los alimentos y ésta declara que conoce la naturaleza no salarial del mismo. <strong>EL PATRONO</strong> se reserva el derecho a incrementar o disminuir el monto de dicho beneficio, como de igual forma podrá el <strong>EL PATRONO</strong> reservarse el <strong>DERECHO DE SEGUIR CANCELANDO DICHO BONO</strong>, -->
+                    <!--    en caso de suspensión de este bono de alimentación, no se considera como una desmejora del trabajador por cuánto no tiene carácter salarial.-->
+                    <!--</p>-->
+                    <p align="justify">
+                        <strong>SEPTIMA: INASISTENCIA INJUSTIFICADA.</strong>La inasistencia injustificada de <strong>“EL TRABAJADOR”</strong> a su puesto de trabajo permitirá a <strong>“EL EMPLEADOR”</strong> omitir el pago del salario del día y del beneficio de alimentación y se constituirá como una causal para el despido justificado en los términos y consideraciones estatuidas en el artículo 79 de la Ley Orgánica del Trabajo, los Trabajadores y las Trabajadoras. 
+                    </p>
+                    <p align="justify">
+                        <strong>OCTAVA: Deberes y obligaciones. “EL TRABAJADOR” </strong>declara conocer y aceptar que con la suscripción del presente contrato queda obligado con <strong>“EL EMPLEADOR”</strong> a cumplir con los siguientes deberes y/o parámetros:
+                        <ol>
+                          <li>Asistir con puntualidad a cumplir con la jornada de trabajo pautada, debiendo de participar con premura y antelación sobre cualquier inconveniente de fuerza mayor o caso fortuito que pudiera retardar el inicio de su jornada laboral o causar su ausencia. Así mismo, deberá de justificar en tiempo hábil las razones de su falta o retraso so pena de las consecuencias establecidas en la cláusula octava, a saber, dentro de los dos (2) días hábiles siguientes a la falta. </li>
+                          <li>Mantener excelente presencia e higiene personal. </li>
+                          <li>Mantener un trato cortes y respetuoso, así como una manifestación conductual ordenada, disciplinada, de consideración, cooperación y colaboración con <strong>“EL EMPLEADOR”</strong>, supervisor, personal administrativo, compañeros de trabajo, clientes, terceros y a otras personas que visiten la entidad de trabajo. </li>
+                          <li>Cuidar y mantener en perfectas condiciones de salubridad el área de trabajo en la cual desarrolla sus actividades laborales, así como todas aquellas con las cuales tenga contacto dentro de entidad de trabajo.</li>
+                          <li>Cuidar y salvaguardar todos y cada uno de los equipos de oficina, herramientas y útiles de trabajo que le sean suministrados, para garantizar el desenvolvimiento operativo adecuado del área donde desempeñe sus funciones. </li>
+                          <li>Cumplir a cabalidad con las tareas asignadas diariamente con la finalidad de satisfacer las exigencias y demás necesidades de los clientes que requieran los servicios de la entidad de trabajo, así como en aras de coadyuvar con la eficaz productividad de la empresa.</li>
+                          <li>Resguardar y mantener la confidencialidad de la información obtenida en la empresa ó por parte de la junta directiva.</li>
+                          <li>Realizar el marcaje en el control de asistencia (biométrico) o en su defecto control de asistencia manual en la hora de entrada y salida de la jornada de trabajo.</li>
+                          <li>Estricto uso del uniforme para el cumplimiento de la jornada de trabajo.</li>
+                          <li>Reportar cualquier novedad a su supervisor inmediato.</li>
+                          <li>Acatar las instrucciones impartidas por los supervisores y/o representantes del <strong>“EL EMPLEADOR”</strong>, así como las normativas internas delineadas en el reglamento de la entidad de trabajo.</li>
+                          <li>Mantener la armonía dentro de la entidad de trabajo, aún más en horario de atención al público.</li>
+                          <li>Demás obligaciones establecidas en su descripción de cargo y reglamento interno.</li>
+                        </ol>
+                    </p>
+                    <p align="justify">
+                        <strong>NOVENA: DE LAS SANCIONES. </strong>Las faltas cometidas por un empleado en el desempeño de su cargo, serán sancionadas de acuerdo con la gravedad de las mismas. La amonestación privada y verbal, 
+                        se aplicará en el caso de faltas leves, la reincidencia de faltas leves se hará la amonestación por escrito, la calificación de despido se efectuará cuando el trabajador haya incurrido en las causales previstas en la Ley y haya acumulado tres (3) amonestaciones por escrito, 
+                        salvo que el comportamiento, acción u omisión del trabajador constituya una falta grave y/o que ponga en peligro la seguridad y salud de los trabajadores y del empleador, para lo cual no se requerirá la acumulación de las amonestaciones por escrito, anteriormente descritas.
+                    </p>
+                    <p align="justify">
+                        <strong>PARAGRAFO PRIMERO:</strong> las faltas son clasificadas de la siguiente forma: <strong>FALTAS LEVES</strong> 1) Ingreso tardío injustificado al centro de trabajo, siempre y cuando las mismas no superen cuatro (4) oportunidades en el periodo de un mes 
+                        2) utilización indebida o desautorizada de instrumentos y materiales que la empresa hubiere confiado al trabajador para el desempeño de sus labores. 3) Uso de las computadoras para juegos y asuntos personales. 4) Comportamiento contrario a la moral y las buenas costumbres dentro de los establecimientos de la empresa. 
+                        5) Encargarse de asuntos ajenos al servicio, dentro del establecimiento y en horas de trabajo. 6) Ingresar en otro departamento o área ajena a las labores que desempeña; y todas aquellas que no sean consideradas como faltas graves. La reincidencia de la conducta constituida como falta leve, será causal de amonestación por escrito por considerarse como falta grave, por la contumacia del trabajador.
+                        
+                    </p>
+                    <p align="justify">
+                        <strong>FALTAS GRAVES:</strong> las siguientes: 1) Utilizar palabras indecentes y groseras dentro de la empresa, agredir física y verbalmente a su superior o algún compañero de trabajo. 2) Agredir físicamente a uno de los clientes del establecimiento. 3) Ausentarse de su trabajo, sin haber solicitado el permiso correspondiente. 4) Ingerir bebidas alcohólicas o cualquier otra droga dentro de su horario de trabajo que desprestigie el establecimiento, o presentarse en evidente estado de ebriedad. 5) Hacer uso de la mercancía o inventario de la empresa para beneficio personal o apropiarse indebidamente del mismo. 
+                        6) Cuando el trabajador cometa actos que impliquen violación de las obligaciones o prohibiciones que a él incumben, así como las que ordenen sus jefes para la mejor ejecución de las labores y comportamiento en el trabajo. 7) La negativa y reiterada del trabajador a adoptar las medidas preventivas o a seguir los procedimientos indicados para evitar accidentes o enfermedades. 8) Revelar secretos o formulas propias de la empresa. 9) La reincidencia de faltas consideradas como leves, pese a las amonestaciones orales u escritas. 10) Cualquier otra falta análoga a las indicadas, previo estudio por parte del departamento de recursos humanos
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA: “Rescisión de contrato y/o culminación de la relación de trabajo". </strong> Queda convenido y aceptado por <strong>“EL EMPLEADOR”</strong> y <strong>“EL TRABAJADOR”</strong> que el presente contrato de trabajo podrá darse por terminado en caso que <strong>“EL TRABAJADOR”</strong> incumpla con las condiciones estipuladas en este contrato, en el reglamento interno, así como cuando incurriere en alguna de las causales establecidas en el artículo 79 de la Ley Orgánica del Trabajo, de los Trabajadores y de las Trabajadoras las cuales declara conocer y entender. Así mismo, <strong>“EL TRABAJADOR”</strong> comprende, acuerda y acepta que será causal de culminación de la relación de trabajo cuando el <strong>“EL EMPLEADOR”</strong> audite un bajo desempeño y rendimiento de <strong>“EL TRABAJADOR”</strong> en las actividades laborales asignadas, así como que realice el trabajo asignado de mala o baja calidad al grado que incida en la productividad y ganancias de <strong>“EL EMPLEADOR”</strong>. Igualmente las partes comprenden, acuerdan y aceptan que será causal de extinción del presente contrato individual de trabajo, aquellas consideradas como de caso fortuito o de fuerza mayor, no imputable a ninguno de los sujetos laborales contratantes, todo ello, conforme a las disposiciones del artículo 76 la Ley Orgánica del Trabajo, de los Trabajadores, así mismo, será causal de culminación del contrato por causas ajenas a la voluntad de las partes, cuando la empresa paralice sus actividades bien sea por el no 
+                        suministro de mercancía o alimentos ó le sea suspendido o suprimida la permisología exigida para la actividad productiva. Finalmente, ambas partes acuerdan que, cuando <strong>“EL TRABAJADOR”</strong> sea beneficiada por la pensión de adulto mayor la relación de trabajo culminará en forma inmediata por voluntad común de las partes, conforme al artículo 76 de la LOTTT.
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA PRIMERA: HERRAMIENTAS Y MATERIALES DE LA EMPRESA. "EL TRABAJADOR”</strong>se compromete y declara que de ninguna manera usara para fines y beneficios personales las herramientas, maquinarias o bienes propiedad de la empresa y en general ningún recurso propiedad de <strong>“EL EMPLEADOR”</strong>, 
+                        acarreando el incumplimiento de la presente clausula una causal de extinción del presente contrato individual de trabajo, así como la obligación de resarcir a <strong>“EL EMPLEADOR”</strong> el costo del material y/o bien utilizado para beneficio personal de <strong>“EL TRABAJADOR”</strong>.
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA SEGUNDA: CONFIDENCIALIDAD. "EL TRABAJADOR”</strong> se compromete y queda obligado de manera expresa, durante la vigencia del contrato, así como después de su extinción, a no difundir, transmitir, proporcionar, ni revelar a terceras personas cualquier información confidencial de <strong>“EL EMPLEADOR”</strong> a la que tenga acceso como consecuencia del desempeño de su actividad laboral, 
+                        ni a utilizar tal información en interés propio o de sus familiares o amigos. Se entiende por <strong>“Información confidencial”</strong> cualquier información técnica, financiera o comercial propiedad de <strong>“EL EMPLEADOR”</strong> revelada verbalmente, por escrito o por cualquier medio físico o electrónico a <strong>“EL TRABAJADOR”</strong>, antes o después de la firma del presente contrato. La <strong>“información confidencial”</strong>, 
+                        además de constituir la información generada con motivo del trabajo, comprende también aquella que, de manera enunciativa y no limitativa, obtenga <strong>EL TRABAJADOR</strong> de manera directa o indirecta, relacionada con cualquier proceso de producción, secreto industrial, comercial, de fabricación, administrativo y demás información que <strong>“EL EMPLEADOR”</strong> haya desarrollado, así como asuntos administrativos, 
+                        de costos o ventas además de la obtenida por socios, consejeros, representantes legales, directivos, gerentes, asesores, dependientes y demás personas físicas o morales que guarden relación con <strong>“EL EMPLEADOR”</strong>. <strong>PARÁGRAFO ÚNICO:</strong> La vulneración de este compromiso será considerado como causa justificada e inmediata de extinción del presente contrato, sin derecho a la percepción de indemnización alguna. 
+                        En el supuesto de incumplimiento del compromiso asumido y con independencia de la extinción del contrato de trabajo, <strong>“EL EMPLEADOR”</strong>, se reserva el derecho de reclamar por vía judicial el resarcimiento de los daños y perjuicios que le pudieran causar como consecuencia de la violación del deber de confidencialidad y secreto profesional pactado en la presente cláusula.
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA TERCERA: SEGURIDAD Y SALUD LABORAL. “EL TRABAJADOR”</strong> declara que se le hizo entrega de las herramientas de seguridad exigidas al cargo desempeñar y declara que le fue notificado de las condiciones inseguras a las cuales se encuentra expuesto, inherentes a su puesto de trabajo ( notificación de riesgo) y se compromete a cumplir con las normas de seguridad y salud laboral, contempladas tanto en la Ley Orgánica de Prevención y Medio Ambiente en el Trabajo, las disposiciones, normas y reglamentos vigentes, así como las políticas internas de seguridad y salud 
+                        de la empresa las cuales declara conocer mediante el presente contrato, en ocasión a que se le otorgó la instrucción correspondiente. 
+
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA CUARTA: CONSECUENCIAS DE LA VIOLACIÓN DEL PRESENTE CONTRATO.</strong> Las partes acuerdan que se considerará como falta grave a las obligaciones propias del vínculo laboral, la violación parcial o total del presente contrato, en cualquiera de sus cláusulas y/o numerales, por tanto, en caso que se compruebe dicha violación <strong>“EL EMPLEADOR”</strong> se reserva el derecho a proceder a la calificación de falta a <strong>“EL TRABAJADOR”</strong> ante el órgano competente para proceder con el despido del mismo.  
+
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA QUINTA: FUENTES DE DERECHO.</strong> Todo lo no previsto en este contrato se regirá por las normas contenidas en Decreto con Rango, Valor y Fuerza de Ley Orgánica del Trabajo, los Trabajadores y las Trabajadoras, en el Reglamento y demás normas aplicables en la materia. Finalmente, las partes se obligan a dar fiel cumplimiento a cada una de las estipulaciones contenidas en el presente contrato, reconociendo haberlo leído y entendido en todas sus partes.  
+
+                    </p>
+                    <p align="justify">
+                        <strong>DECIMA SEXTA: MANIFESTACIÓN EXPRESA DE CONFORMIDAD. “EL TRABAJADOR” </strong> manifiesta haber leído completa y 
+                        cuidadosamente el presente contrato, y manifiesta su conformidad, así mismo, declara que toda la información aquí suministrada es veraz y puede ser verificada por el <strong>“EL EMPLEADOR”</strong> en el momento que lo considere conveniente. 
+                        Se hacen dos ejemplares del mismo tenor a un solo efecto. 
+                    </p>
+                    <BR/>
+                    <p align="justify">En la ciudad de <strong t-field="o.company_id.city"/>,<span t-esc="datetime.date.today().strftime('el día %d del mes %B del año %Y')"/></p>
+
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <strong>FIRMA DE "EL EMPLEADOR".</strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/><br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-6 text-center">
+                            <div class="row">
+                              <div class="col-12">
+                                <strong>"EL TRABAJADOR"</strong>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-4">
+                                <strong>Nombre y Ap.</strong>
+                              </div>
+                              <div class="col-8 border-bottom">
+                                <strong/>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-4">
+                                <strong>C.I.</strong>
+                              </div>
+                              <div class="col-8 border-bottom">
+                                <strong/>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-4">
+                                <strong>Firma</strong>
+                              </div>
+                              <div class="col-8 border-bottom">
+                                <strong/>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-1 text-center">
+                            
+                        </div>
+                        <div class="col-4 text-center">
+                            <table>
+                              <tr style="line-height:6;" class="align-bottom">
+                                <td style="padding-top:40px;color:gray;">
+                                  pulgar izquierdo
+                                </td>
+                                <td style="padding-top:40px;color:gray;">
+                                  pulgar derecho
+                                </td>
+                              </tr>
+                              <tr style="background-color:gray;">
+                                <td colspan="2">
+                                  Huellas
+                                </td>
+                              </tr>
+                            </table>
+                        </div>
+                        <div class="col-1 text-center">
+                            
+                        </div>
+                    </div>
+                    
+
+                </div>
+                </t>
+            </t> 
+            <!--</t>-->
+        </t>
+
+    </t>
+</odoo>

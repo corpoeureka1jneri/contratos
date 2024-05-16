@@ -1,0 +1,1021 @@
+<!-- FILEPATH: /C:/Users/jneri/Documents/GitHub/contratos/contratos_berakah.xml -->
+
+<odoo>
+  <data>
+    <t t-name="l10n_ve_payroll.template_contracto_indetermined">
+        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+        <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+        <div class="row text-end">
+          <strong t-field="o.company_id.lawyer_ref.name"/>
+        </div>
+        <div class="row text-end">
+          <strong>Inpreabogado N° </strong><strong t-field="o.company_id.num_ipsa"/>
+        </div>
+        <p align="center">
+            <strong>CONTRATO DE TRABAJO A TIEMPO INDETERMINADO</strong>
+        </p>
+        <p align="justify">
+            Entre <strong t-field="o.company_id.name"/>, Sociedad Mercantil debidamente
+            inscrita <span t-field="o.company_id.registrofiscal"/>, Rif <strong t-field="o.company_id.rif"/>, 
+            representada en este acto por su Presidente <strong>JULIO ERNESTO MENDOZA DELGADO</strong>, venezolano, mayor
+            de edad, hábil en derecho, titular de la cédula de identidad N V-17.571.785, con
+            Registro de Información Fiscal Rif V-175717850, empresa domiciliada en la Calle
+            Ricaurte, Centro Comercial La Pradera, Nivel piso 1, Local L-28, , Sector Casco
+            Central, Municipio Piar, Upata, Estado Bolívar, Zona Postal 8052, quien en lo
+            sucesivo, a los efectos y consecuencias de este contrato se denominará <strong>LA EMPLEADORA</strong>, 
+            por una parte y por la otra, el (la) ciudadano (a)  
+            <strong t-field="o.employee_id.name"/>, venezolano (a), de <strong t-esc="o.numero_to_letras_contract(o.employee_id.employee_age)"/> (<strong t-field="o.employee_id.employee_age"/>) años, 
+            hábil en derecho, titular de la cédula de identidad <strong t-field="o.employee_id.identification_id_2"/>, 
+            domiciliado (a) en <span t-field="o.employee_id.street"/>, en la Ciudad <span t-field="o.employee_id.city_id.name"/>, Estado <span t-field="o.employee_id.state_id.name"/>, 
+            quien en lo sucesivo, a los efectos y consecuencias de este contrato se denominará <strong>EL(LA) TRABAJADOR(A)</strong> se ha convenido en celebrar, 
+            como en efecto se celebra en este acto, el presente contrato de trabajo a tiempo indeterminado, el cual en lo
+            sucesivo y a los únicos efectos de este documento se abreviará como <strong>ESTE CONTRATO</strong>, que se hará en forma escrita de conformidad con lo establecido en
+            los artículos 58 y 59 de la Ley Orgánica del Trabajo, de los Trabajadores y
+            Trabajadoras, publicada en la en la Gaceta Oficial Extraordinaria Nro. 6.076 de
+            fecha siete (07) de mayo de 2012, (en lo sucesivo LOTTT), y su contenido estará
+            estructurado según lo establecido en los numerales del artículo 59 de la LOTTT,
+            de acuerdo a las cláusulas siguientes:
+        </p>
+        <p align="justify">
+          <strong><u>PRIMERA:</u> Forma de contrato: LA EMPLEADORA</strong> contrata a Tiempo Indeterminado a <strong>EL(LA) TRABAJADOR(A)</strong>, quien se obliga a prestar para 
+          <strong>LA EMPLEADORA</strong> sus servicios personales bajo dependencia desde la fecha y hora
+          de haber suscrito este contrato, como <span t-field="o.job_id.name"/>, adscrito al
+          Departamento <span t-field="o.department_id.name"/>, con disponibilidad inmediata,
+          cumpliendo con todas las funciones inherentes al cargo asignado, las cuales se
+          detallan a continuación: <span t-field="o.job_id.description"/>
+          <strong>EL(LA) TRABAJADOR(A)</strong> acepta, y así se conviene, en ser transferido,
+          trasladado o movilizado a otras instalaciones o zonas de <strong>LA EMPLEADORA</strong> en
+          cualquier lugar del territorio de la República Bolivariana de Venezuela por
+          necesidades o requerimientos de <strong>LA EMPLEADORA</strong>. 
+        </p>
+        <p align="justify">
+          <strong><u>SEGUNDA:</u> Denominación del puesto de trabajo o cargo y descripción de los
+          servicios a prestar: EL (LA) TRABAJADOR (A)</strong>, se obligó a prestar su servicio
+          personal, por cuenta y bajo dependencia de <strong>LA EMPLEADORA</strong> desde el día <span t-esc="yas[o.date_start.weekday()] if o.date_start else ''"/> <span t-esc="o.date_start.strftime('%d') if o.date_start else ''"/> de <span t-esc="das[o.date_start.strftime('%m')] if o.date_start else ''"/> de <span t-esc="o.date_start.strftime('%Y') if o.date_start else ''"/>, para ocupar el cargo
+          de <span t-field="o.job_id.name"/>, adscrito al Departamento de <span t-field="o.department_id.name"/>. Se describe
+          en forma enunciativa que los servicios y funciones atinentes a su cargo comprende
+          entre otros los siguientes: <span t-field="o.job_id.description"/>
+      
+        </p>
+        <p align="justify">
+          <strong>Parágrafo Primero:</strong> Cualquier incumplimiento por parte <strong>EL(LA) TRABAJADOR(A)</strong>
+          a lo establecido en esta cláusula dará lugar al despido justificado o a una
+          medida disciplinaria constituida por una suspensión de la relación laboral,
+          adoptada por <strong>LA EMPLEADORA</strong> a su discreción, siempre que: i) No excediere de
+          quince (15) días continuos. ii) Se fundamentare en conducta imputable al
+          trabajador de las previstas en la presente cláusula y en el artículo 79 de la Ley
+          Orgánica del Trabajo de las Trabajadoras y los Trabajadores. iii) Fuere
+          debidamente notificada por escrito, antes de que hubieren transcurrido treinta (30)
+          días continuos desde aquel en que <strong>LA EMPLEADORA</strong> haya tenido del hecho que
+          constituya causa justificada para aplicar la medida disciplinaria. 
+        </p>
+        <p align="justify">
+          <strong><u>TERCERA:</u> Exclusividad de Servicios:</strong> Queda expresamente aceptado por 
+          <strong>EL(LA) TRABAJADOR(A)</strong> en virtud de este contrato, el cual se obliga a cumplir,
+          que durante el tiempo en el cual se obliga a prestar su servicio, se encontrará a
+          disposición de <strong>LA EMPLEADORA</strong>, no realizará ninguna otra actividad,
+          remunerada o no, por su propia cuenta o por medio de cualquier otra persona
+          distinta a <strong>LA EMPLEADORA</strong>, en consecuencia, <strong>EL(LA) TRABAJADOR(A)</strong>
+          observará, entre otros, los siguientes deberes fundamentales: <strong>a)</strong> Prestar el
+          servicio en las condiciones y términos pactados o que se desprendieren de la
+          naturaleza de la actividad productiva;<strong>b)</strong> Observar las órdenes e instrucciones que,
+          sobre el modo de ejecución del trabajo, dictare <strong>LA EMPLEADORA</strong> o cualquiera
+          de sus representantes, debiendo someterse al organigrama (implantado por <strong>LA EMPLEADORA</strong>) 
+          de la entidad de trabajo donde es asignado para prestar su
+          servicio, debiendo someterse a su marco supervisorio y a cualquier cargo análogo,
+          reconociendo en especial como su supervisor o cargo superior, y sin perjuicio de
+          lo establecido anteriormente, al cargo de <span t-field="o.job_id.name"/>, el cual declara
+          conocer; <strong>c)</strong> Prestar fielmente sus servicios, con ánimo de colaboración, y
+          abstenerse de ejecutar prácticas desleales o divulgar informaciones sobre la
+          actividad productiva que pudieren ocasionar perjuicios al patrono o patrona.
+          Cualquier incumplimiento tipificará una falta grave a las obligaciones que le
+          impone su contrato y/o relación de trabajo en los términos de la cláusula quinta.
+        </p>
+        <p align="justify">
+          <strong><u>CUARTA:</u> Conocimiento, Aptitud: EL(LA) TRABAJADOR(A)</strong> declara poseer
+          los conocimientos, la experiencia y la capacidad necesaria para la ejecución de
+          las tareas, trabajos y/o las actividades de alta responsabilidad que constituyen el
+          objeto del contrato.
+        </p>
+        <p align="justify">
+          <strong><u>QUINTA:</u> Índole de las Funciones y Confidencialidad:</strong>
+          Durante la vigencia de este contrato y hasta cinco (5) años luego de su terminación 
+          <strong>EL(LA) TRABAJADOR(A)</strong> no divulgará a persona alguna, bien sea natural o jurídica,
+          directa o indirectamente, información a la que tendrá acceso y que pertenezca de
+          manera exclusiva a <strong>LA EMPLEADORA</strong> y/o a las compañías mencionadas en la
+          cláusula anterior, sin la previa autorización expresa de un funcionario autorizado
+          de <strong>LA EMPLEADORA</strong> dada por escrito. Cualquier incumplimiento por parte 
+          <strong>EL(LA) TRABAJADOR(A)</strong> a lo establecido en ésta cláusula dará lugar al despido
+          justificado, y a intentar acciones legales por daños y perjuicios, tanto si el
+          incumplimiento ocurriera durante la vigencia de este contrato o en un momento
+          posterior.
+        </p>
+        <p align="justify">
+          <strong><u>SEXTA:</u> Jornada y horario: EL(LA) TRABAJADOR(A)</strong>
+          se obliga a prestar su servicio personal a <strong>LA EMPRESA</strong>, en las instalaciones de <strong>LA EMPRESA</strong> de la
+          Planta Berakah, en las siguientes condiciones de tiempo: Jornada especial y
+          convenida por turno de (<strong t-esc="len(list(set(o.resource_calendar_id.mapped('attendance_ids.dayofweek'))))"/>) días continuos trabajados por (<strong t-field="o.resource_calendar_id.rest_days"/>) días
+          libres, como días de descanso remunerado. Correspondiendo (<strong t-field="o.resource_calendar_id.interjournal_rest"/>) hora de
+          descanso inter-jornada diaria y alimentación.
+      </p>
+        <p align="justify">
+          <strong><u>Parágrafo Primero:</u> </strong>
+           Queda entendido que <strong>EL(LA) TRABAJADOR(A)</strong>, deberá
+          cumplir el horario de trabajo pactado en esta cláusula, hasta tanto no se celebre
+          un pacto (a futuro) mediante el cual las partes acuerden una jornada de trabajo
+          distinta.
+        </p>
+        <p align="justify">
+            <t t-if="o.employee_id.has_autorized">
+              <t t-set="cedula_v" t-value="o.employee_id.ci_autorizate"/>
+              <t t-set="cuenta" t-value="o.employee_id.account_number_autorizate"/>
+              <t t-set="nombre" t-value="o.employee_id.name_autorizate"/>
+              <t t-set="banco" t-value="o.employee_id.bank_autorizate or ''"/>
+            </t>
+            <t t-else="">
+              <t t-set="cedula" t-value="o.employee_id.identification_id_2"/>
+              <t t-set="cuenta" t-value="o.employee_id.account_number_2"/>
+              <t t-set="cedula_v" t-value="o.employee_id.rif.replace('-', '')"/>
+              <t t-set="nombre" t-value="o.employee_id.name"/>
+              <t t-set="banco" t-value="o.employee_id.bank_account_id_emp_2 or ''"/>
+            </t>
+
+            <strong><u>SÉPTIMA:</u> Salario y forma de pago:</strong> Por los servicios objeto de este contrato, 
+            EL(LA) TRABAJADOR(A), recibirá un salario de <span t-esc="o.numero_to_letras_contract(o.wage)"/> BOLÍVARES (Bs. <span t-field="o.wage"/> ). 
+            La forma de pago será mensual dividida y
+            pagada en dos quincenas en las que están comprendidos los días feriados y su
+            descanso, a través de una cuenta de nómina en el Banco <strong t-esc="banco"/>, en la cta.
+            N° <strong t-esc="cuenta"/>. Se le participa <strong>EL(LA) CONTRATADO(A)</strong> que se
+            efectuarán las deducciones pertinentes por ley, establecidas en el <strong>S.S.O, R.P.E.,INCES y FAOV.</strong>
+        </p>
+        <p align="justify">
+            <strong>Parágrafo Primero:</strong> Las retribuciones establecidas en esta cláusula, serán las
+            únicas y exclusivas remuneraciones a las cuales tendrá derecho EL (LA)
+            TRABAJADOR (A) con ocasión del servicio prestado, y constituirán de manera
+            única y exclusiva la composición del salario.
+        </p>
+        <p align="justify">
+          <strong>Parágrafo Segundo:</strong> En el transcurso de la relación laboral, se entenderá
+          informado a <strong>EL(LA) TRABAJADOR(A)</strong> de las remuneraciones que le
+          corresponden de acuerdo al servicio prestado, con la suscripción de los recibos
+          de pago, en consecuencia, <strong>EL(LA) TRABAJADOR(A)</strong> no podrá alegar haber
+          percibido cantidades distintas a las indicadas en dichos recibos ya que los mismos
+          deberán reflejar la verdad de los efectivos devengados percibidos por <strong>EL(LA) TRABAJADOR(A)</strong> 
+          por la aplicación de su fuerza de trabajo, quedando entendido
+          que en caso que el documento respectivo tenga alguna inconsistencia o
+          irregularidad ( de la naturaleza que fuere) <strong>EL(LA) TRABAJADOR(A)</strong> quedará
+          liberado(a) de su suscripción.
+      </p>
+      <p align="justify">
+          <strong>Parágrafo Tercero:</strong> El monto, la clase y forma de pago del salario estipulado en
+          ésta cláusula, constituye lo pactado desde el inicio de la relación de trabajo, en
+          consecuencia, cualquier modificación en el tracto de la misma, será objeto de
+          acuerdo celebrado por escrito, en el entendido que únicamente tendrán efectos
+          los pactos realizados de manera verbal, cuando no exista objeción de alguna de
+          las partes o existan signos inequívocos de haber modificado alguna condición, de
+          lo contrario no tendrán efectos verbales.
+      </p>
+      <p align="justify"><strong><u>OCTAVA:</u> Vacaciones: LA EMPLEADORA</strong>
+        conviene en pagar a <strong>EL(LA) TRABAJADOR(A)</strong> cuarenta y cinco (45) días de Vacaciones. Así mismo, y con
+        fundamento en el Artículo 192 de la LOTTT LA EMPLEADORA conviene en cancelar treinta (30) días de Bono Vacacional.
+      </p>
+      <p align="justify"><strong><u>NOVENA:</u> LA EMPRESA </strong> concederá a <strong>EL(LA) CONTRATADO(A)</strong> el siguiente
+        beneficio sin carácter salarial: Beneficio de alimentación que va a ser pagado
+        de acuerdo a lo decretado por El Ejecutivo Nacional, publicado en Gaceta Oficial
+        de la República Bolivariana de Venezuela.</p>
+        <p align="justify"><strong><u>DÉCIMA:</u>Utilidades: LA EMPLEADORA</strong>
+          pagará a <strong>EL(LA) TRABAJADOR(A)</strong> la cantidad de noventa (90) días de Utilidad por meses completos laborados del
+          ejercicio fiscal. Cuando <strong>EL(LA) TRABAJADOR(A)</strong> no hubiese laborado todo el
+          año, la bonificación se reducirá a la parte proporcional correspondiente a los
+          meses completos de servicio prestado.</p>
+          <p align="justify"><strong><u>DÉCIMA PRIMERA:</u> </strong>De la acreditación de las Prestaciones Sociales: <strong>EL(LA) TRABAJADOR(A)</strong> de acuerdo con lo establecido en el artículo 143 de la Ley
+            Orgánica del Trabajo, Las Trabajadoras y los Trabajadores, para el caso que su
+            tiempo de servicio sea igual o superior a tres (03) meses, manifiesta su voluntad
+            y autoriza a <strong>LA EMPLEADORA</strong>, a que los depósitos trimestrales y anuales por
+            concepto de garantía de las prestaciones sociales, sean acreditados en la
+            contabilidad de la empresa. Asimismo, queda pactado entre las partes, que los
+            intereses que se generen conforme a la tasa promedio entre la pasiva y la activa,
+            determinada por el Banco Central de Venezuela, sobre las prestaciones sociales,
+            <strong>LA EMPLEADORA</strong> los pagará a <strong>EL(LA) TRABAJADOR(A)</strong> al cumplir cada año
+            de servicio.</p>
+            <p align="justify"><strong><u>DÉCIMA  SEGUNDA:</u> EL(LA) TRABAJADOR(A)</strong> acepta  que  en  casoque  la relación de trabajo por tiempo indeterminado termine por su retiro voluntario, sin que haya causa legal que lo justifique, constituye un deber y no una potestad de él dar el preaviso de acuerdo a lo que establece el artículo 81 de la LOTTT, 
+              lo cual se  encuentra  vinculado  con  el  mismo  deber  de  cumplir  de  buena  fe  todos  los acuerdos de éste contratoy obliga no solo a lo expresado en él, sino a todas las consecuencias que se derivan del mismo contrato, según la equidad, el uso o la Ley, como es señalado en el artículo 1.160 del Código Civil, 
+              en consecuencia y en virtud  que  no  está  expresamente  prohibido  por  la  Ley, <strong>EL(LA) TRABAJADOR(A)</strong> acepta  que  de  omitir  el  preaviso,  deberá  pagar  a LA EMPLEADORA
+              como indemnización, una cantidad equivalente al salario que le habría correspondido en el lapso del preaviso, cuya suma podrá ser compensada contra cualquier cantidad que   deba   pagar LA EMPLEADORA
+              a  <strong>EL(LA) TRABAJADOR(A)</strong> por prestaciones sociales y cualquier otro concepto derivado de la terminación de la relación  laboral,  sin  que  ello  se  entienda  que LA  EMPLEADORA no  está pagándole a EL(LA) TRABAJADOR(A) los beneficios correspondientes hasta la fecha  en  que  prestó  servicio,  
+              del  mismo  modo  en  que  puede  ser  compensada alguna  deuda  de <strong>EL(LA) TRABAJADOR(A)</strong> hacia LA EMPLEADORA, al terminar  la  relación  de  trabajo,  de  conformidad  con  lo  establecido  en  el  primeraparte del artículo 154 de la LOTTT, y el artículo 77 de su Reglamento.</p>
+            <p align="justify"><strong><u>DÉCIMA  TERCERA:</u> </strong> En  virtud  de  las  disposiciones  legales  a  que  se  pueda encontrar obligada <strong>LA EMPLEADORA</strong>
+              a cumplir o respetar, <strong>EL(LA) TRABAJADOR(A)</strong> declara que su núcleo familiar se encuentra constituido por las siguientes personas: 
+              a)Descendientes.b)Cónyuge o persona con la cual tenga una unión estable de hecho.c)Ascendientes.d)Nietos</p>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <td colspan="7">
+                      <strong>DATOS FAMILIARES</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <!-- columnas parentesco,nombre y apellido,c.i.,fecha nacimiento,edad, vive ud.con, depende economicamente de ud  -->
+                    <td><strong>Parentesco</strong></td>
+                    <td><strong>Nombre y Apellido</strong></td>
+                    <td><strong>C.I.</strong></td>
+                    <td><strong>Fecha de Nacimiento</strong></td>
+                    <td><strong>Edad</strong></td>
+                    <td><strong>Vive Ud. con</strong></td>
+                    <td><strong>Depende Económicamente de Ud.</strong></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Si tiene padre, entonces coloca una  columna con esos datos -->
+                  <tr t-if="o.employee_id.father_name">
+                    <td>Padre</td>
+                    <td><span t-field="o.employee_id.father_name"/></td>
+                    <td><span t-field="o.employee_id.father_ci"/></td>
+                    <td><span t-field="o.employee_id.father_date"/></td>
+                    <td><span t-field="o.employee_id.father_age"/></td>
+                    <td><span t-field="o.employee_id.father_live_with"/></td>
+                    <td><span t-field="o.employee_id.father_economic_dependence"/></td>
+                  </tr>
+                  <!-- si tiene madre, entonces coloca una columna con esos datos -->
+                  <tr t-if="o.employee_id.mother_name">
+                    <td>Madre</td>
+                    <td><span t-field="o.employee_id.mother_name"/></td>
+                    <td><span t-field="o.employee_id.mother_ci"/></td>
+                    <td><span t-field="o.employee_id.mother_date"/></td>
+                    <td><span t-field="o.employee_id.mother_age"/></td>
+                    <td><span t-field="o.employee_id.mother_live_with"/></td>
+                    <td><span t-field="o.employee_id.mother_economic_dependence"/></td>
+                  </tr>
+                  <!-- si tiene conyugue, entonces coloca una columna con esos datos -->
+                  <tr t-if="o.employee_id.spouse_name">
+                    <td>Cónyuge</td>
+                    <td><span t-field="o.employee_id.spouse_name"/></td>
+                    <td><span t-field="o.employee_id.spouse_ci"/></td>
+                    <td><span t-field="o.employee_id.spouse_date"/></td>
+                    <td><span t-field="o.employee_id.spouse_age"/></td>
+                    <td><span t-field="o.employee_id.spouse_live_with"/></td>
+                    <td><span t-field="o.employee_id.spouse_economic_dependence"/></td>
+                  </tr>
+                  <!-- por cada hijo coloca una columna por cada uno -->
+                  <tr t-foreach="o.employee_id.son_ids" t-as="line">
+                    <!-- si es sex_sons es f o m colocar acorde-->
+                    <t t-if="line.sex_sons=='f'">
+                      <td>Hija</td>
+                    </t>
+                    <t t-else="">
+                      <td>Hijo</td>
+                    </t>
+                    <td><span t-field="line.name_sons"/></td>
+                    <td><span t-field="line.ci_sons"/></td>
+                    <td><span t-field="line.date_sons"/></td>
+                    <td><span t-field="line.age_sons"/></td>
+                    <td><span t-field="line.live_with_son"/></td>
+                    <td><span t-field="line.economic_dependence_son"/></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
+              <p align="justify"><strong><u> Parágrafo  Único:</u> </strong> EL(LA)  TRABAJADOR(A) acepta  de  manera  expresa,  que incurrirá en falta de probidad el hecho de no haber aportado o haberlo hecho de manera sesgada la información declarada en esta cláusula.</p>
+              
+              <p align="justify"><strong><u>DÉCIMA CUARTA:</u> </strong> Higiene y Seguridad industrial: <strong>EL(LA) TRABAJADOR(A)</strong> declara que ha sido advertido de todos y cada uno de los riesgos que rodean no sólo las actividades de <strong>LA EMPLEADORA</strong>,
+                sino también de aquellos propios a los de sus tareas, trabajos y/o actividades que constituyen el objeto del contrato, todos los cuales se obliga a prevenir. Asimismo, reconoce que <strong>LA EMPLEADORA</strong> le ha hecho entrega de los útiles de higiene, seguridad industrial y protección personal requeridos para las tareas,
+                trabajos y/o actividades que constituyen el objeto del contrato  y se  obliga  a cumplir  las  disposiciones de  la Ley  Orgánica del Trabajo, Ley  Orgánica  de  Prevención,  Condiciones  y  Medio  Ambiente  del  Trabajo,
+                el Reglamento  de  Higiene  y  Seguridad  Industrial  y  los  reglamentos  y/o  normas establecidas  por <strong>LA EMPLEADORA</strong>,  en  los  distintos  sitios  donde  se  encuentre prestando sus servicios, reportando a <strong>LA EMPLEADORA</strong>, con la mayor brevedad posible,  cualquier  condición  insegura  que  hubiere  observado  en  la  ejecución  de sus funciones.
+                <strong>LA EMPLEADORA</strong> se obliga a reponer los útiles o implementos de higiene y seguridad industrial que por su uso resulten deteriorados, los cuales <strong>EL(LA) TRABAJADOR(A)</strong> entregará para su control  y reposición.  Si tales útiles o implementos  se  dañasen  por  culpa  de <strong>EL(LA)  TRABAJADOR(A)</strong>,  o  se  le perdiesen,  éste  deberá  reponerlos  o  pagarle  a <strong>LA  EMPLEADORA</strong> una  suma equivalente a su valor de reposición.
+              </p>
+              <p align="justify"><strong><u>DÉCIMA QUINTA:</u> Inasistencias: </strong>
+                Sin perjuicio de otros efectos y/o sanciones por inasistencias, cuando <strong>EL(LA) TRABAJADOR(A)</strong> falte, durante la jornada
+                semanal, dos (2) días o más perderá el derecho al pago de los días de descanso
+                remunerado. Conforme al artículo 79 de la LOTTT, cuando <strong>EL(LA) TRABAJADOR(A)</strong> falte días sin causa justificada y <strong>LA EMPLEADORA</strong> le hubiera
+                pagado los salarios correspondientes a esos días, tal período de inasistencia, y su pago, se imputará a las vacaciones</p>
+              <p align="justify"><strong><u>DÉCIMA SÉXTA:</u> Aspectos No Previstos: </strong> Queda entendido entre las partes, que en todo lo no previsto en el presente contrato se aplicará lo establecido en las leyes que rigen en materia del trabajo y la seguridad social.</p>
+              <p align="justify"><strong><u>DÉCIMA SÉPTIMA:</u> Notificaciones: </strong> 
+                Cualquier notificación que deseen hacerse
+                las partes de este Contrato, deberá hacerse necesariamente por escrito y serle
+                notificada a la otra a las direcciones de las partes que seguidamente se señalan:
+                Si va dirigida a <strong>LA EMPLEADORA</strong>: Calle Ricaurte, Centro Comercial La Pradera,
+                Nivel piso 1, Local L-28, Sector Casco Central, Municipio Piar, Upata, Estado
+                Bolívar.Si va dirigida a <strong>EL(LA) TRABAJADOR(A)</strong> <span t-field="o.employee_id.street"/>, ,
+                Casa <span t-field="o.employee_id.house"/>, Estado <span t-field="o.employee_id.state_id.name"/>.</p>
+              <p align="justify"><strong><u>DÉCIMA OCTAVA:</u> Constancia de la entrega del ejemplar del Contrato: </strong>
+                Se deja constancia que en ésta misma oportunidad le es entregado a 
+                <strong>EL(LA) TRABAJADOR(A)</strong>, un ejemplar original de este contrato suscrito por <strong>LA EMPLEADORA</strong>, 
+                en fe de lo cual suscribe este contrato en señal de aceptación del contenido de sus estipulaciones, las cuales se obliga a cumplir a cabalidad y
+                como acuse de haberlo recibido. </p>
+                <p align="justify"><strong><u>DÉCIMA NOVENA:</u> Domicilio Especial:</strong>
+                  Las partes designan a la Ciudad de Puerto Ordaz, como domicilio especial a la jurisdicción de cuyas autoridades administrativas o jurisdiccionales declaran someterse. 
+                </p>
+              <p align="justify"><span t-field="o.company_id.city"/>,<span t-esc="datetime.date.today().strftime('a los %d del mes %B del año %Y')"/>.</p>
+              <p align="center"><strong>POR LA EMPLEADORA</strong></p>
+              <div class="row">
+                <div class="col-4"><strong>Presidente:</strong></div>
+                <div class="col-4"><strong>Gerencia de RRHH</strong></div>
+                <div class="col-4"><strong>Sello</strong></div>
+              </div>
+              <p align="center"><strong>EL(LA) TRABAJADOR(A)</strong></p>
+              <div class="row">
+                <div class="col-4"><strong>Firma autógrafa:</strong></div>
+                <div class="col-4"><strong>Fecha:</strong></div>
+                <div class="col-4"><strong>Hora:</strong></div>
+              </div>
+              <p align="center"><strong>Huellas dactilares del Contratado</strong></p>
+             
+             <div class="col-4 text-center">
+              <table class="table">
+                <tr style="line-height:6;" class="align-bottom">
+                  <td style="padding-top:40px;color:gray;">
+                    Izquierdo
+                  </td>
+                  <td style="padding-top:40px;color:gray;">
+                    Derecho
+                  </td>
+                </tr>
+                <tr style="background-color:gray;">
+                  <td colspan="2">
+                    Huellas
+                  </td>
+                </tr>
+              </table>
+          </div>
+      </t>
+
+      <t t-name="l10n_ve_payroll.template_contracto_determined">
+        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+        <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+        <div class="row text-end">
+          <strong t-field="o.company_id.lawyer_ref.name"/>
+        </div>
+        <div class="row text-end">
+          <strong>Inpreabogado N° </strong><strong t-field="o.company_id.num_ipsa"/>
+        </div>
+        <p align="center">
+            <strong>CONTRATO DE TRABAJO A TIEMPO DETERMINADO</strong>
+        </p>
+        <p align="justify">
+            Entre <strong t-field="o.company_id.name"/>, Sociedad Mercantil debidamente
+            inscrita <span t-field="o.company_id.registrofiscal"/>, Rif <strong t-field="o.company_id.rif"/>, 
+            representada en este acto por su Presidente <strong>JULIO ERNESTO MENDOZA DELGADO</strong>, venezolano, mayor
+            de edad, hábil en derecho, titular de la cédula de identidad N V-17.571.785, con
+            Registro de Información Fiscal Rif V-175717850, empresa domiciliada en la Calle
+            Ricaurte, Centro Comercial La Pradera, Nivel piso 1, Local L-28, , Sector Casco
+            Central, Municipio Piar, Upata, Estado Bolívar, Zona Postal 8052, quien en lo
+            sucesivo, a los efectos y consecuencias de este contrato se denominará <strong>LA EMPLEADORA</strong>, 
+            por una parte y por la otra, el(la) ciudadano(a)  
+            <strong t-field="o.employee_id.name"/>, venezolano(a), de <strong t-esc="o.numero_to_letras_contract(o.employee_id.employee_age)"/> (<strong t-field="o.employee_id.employee_age"/>) años, 
+            hábil en derecho, titular de la cédula de identidad <strong t-field="o.employee_id.identification_id_2"/>, 
+            domiciliado(a) en <span t-field="o.employee_id.street"/>, en la Ciudad <span t-field="o.employee_id.city_id.name"/>, Estado <span t-field="o.employee_id.state_id.name"/>, 
+            quien en lo sucesivo, a los efectos y consecuencias de este contrato se denominará <strong>EL(LA) CONTRATADO(A)</strong> se ha convenido en celebrar, 
+            como en efecto se celebra en este acto, el presente contrato de trabajo a tiempo determinado, el cual en lo
+            sucesivo y a los únicos efectos de este documento se abreviará como <strong>ESTE CONTRATO</strong>, que se hará en forma escrita de conformidad con lo establecido en
+            los artículos 58 y 59 de la Ley Orgánica del Trabajo, de los Trabajadores y
+            Trabajadoras, publicada en la en la Gaceta Oficial Extraordinaria Nro. 6.076 de
+            fecha siete (07) de mayo de 2012, (en lo sucesivo LOTTT), y su contenido estará
+            estructurado según lo establecido en los numerales del artículo 59 de la LOTTT,
+            de acuerdo a las cláusulas siguientes:
+        </p>
+        <p align="justify">
+          <strong><u>PRIMERA:</u> Forma y duración del contrato:</strong>De conformidad con el artículo 64, literal
+          a) de la Ley Orgánica del Trabajo (LOTTT), LA EMPRESA contrata a Tiempo
+          Determinado a <strong>EL(LA) CONTRATADO(A)</strong>, quien se obliga a prestar para <strong>LA EMPRESA</strong> sus servicios personales con el cargo <span t-field="o.job_id.name"/> adscrito a
+          la Gerencia y/o <span t-field="o.department_id.name"/>, con disponibilidad inmediata,
+          cumpliendo con todas las funciones inherentes al cargo asignado, las cuales se
+          detallan a continuación: <span t-field="o.job_id.description"/>
+          <strong>EL(LA) CONTRATADO(A)</strong> acepta, y así se conviene, en ser transferido, trasladado
+          o movilizado a otras instalaciones o zonas de <strong>LA EMPRESA</strong> en cualquier lugar del
+          territorio de la República Bolivariana de Venezuela por necesidades o requerimientos
+          de <strong>LA EMPRESA.</strong>
+        </p>
+        <p align="justify">
+          <strong> Duración del contrato:</strong>
+          El presente contrato a tiempo determinado tendrá una
+        duración de (<strong t-esc="round((o.date_end-o.date_start).days/30)"/>) meses, contados desde el desde el día <span t-esc="yas[o.date_start.weekday()] if o.date_start else ''"/> <span t-esc="o.date_start.strftime('%d') if o.date_start else ''"/> de <span t-esc="das[o.date_start.strftime('%m')] if o.date_start else ''"/> de <span t-esc="o.date_start.strftime('%Y') if o.date_start else ''"/>
+        hasta el desde el día <span t-esc="yas[o.date_end.weekday()] if o.date_end else ''"/> <span t-esc="o.date_end.strftime('%d') if o.date_end else ''"/> de <span t-esc="das[o.date_end.strftime('%m')] if o.date_end else ''"/> de <span t-esc="o.date_end.strftime('%Y') if o.date_end else ''"/>. Las partes convienen que la duración
+        del contrato pueda dar lugar a una prórroga adicional del contrato.
+        </p>
+        
+        <p align="justify">
+          <strong><u>SEGUNDA:</u>  Denominación del puesto de trabajo o cargo y descripción de los
+            servicios a prestar: EL(LA) CONTRATADO(A)</strong> se contrata para ocupar el cargo
+            de <span t-field="o.job_id.name"/>, con disponibilidad inmediata, cumpliendo con todas las
+            funciones inherentes al cargo asignado, las cuales se detallan a continuación:
+            <span t-field="o.job_id.description"/>
+        </p>
+        
+        <p align="justify">
+          <strong><u>TERCERA:</u> Conocimiento, Aptitud: EL(LA) CONTRATADO(A)</strong>
+          declara poseer los
+          conocimientos, la experiencia y la capacidad necesaria para la ejecución de las
+          tareas, trabajos y/o las actividades de alta responsabilidad que constituyen el objeto
+          del contrato.
+        </p>
+        <p align="justify">
+          <strong><u>CUARTA:</u> Exclusividad de Servicios: EL(LA) CONTRATADO(A)</strong>
+          no realizará ninguna otra actividad, remunerada o no, por su propia cuenta o por medio de
+          cualquier otra persona distinta a <strong>LA EMPRESA</strong>, o a las empresas en que ésta
+          participe o con las que forme grupo o consorcio, en todo aquello que directa o
+          indirectamente guarde relación con cualquiera de los extremos del presente
+          documento y/o con las actividades que constituyan el objeto social de dichas
+          compañías. <strong>EL(LA) CONTRATADO(A)</strong> no podrá prestar sus servicios personales,
+          formar parte de la junta directiva y/o tener interés directo o indirecto en el capital social
+          de alguna de las contratistas de <strong>LA EMPRESA</strong> o de las contratistas de las compañías
+          en que <strong>LA EMPRESA</strong> participe o con las que forme grupo o consorcio. Cualquier
+          incumplimiento tipificará una falta grave a las obligaciones que le impone su contrato
+          y/o relación de trabajo en los términos de la cláusula décima tercera.
+        </p>
+        <p align="justify">
+          <strong><u>QUINTA:</u> Índole de las Funciones y Confidencialidad:</strong>
+          Durante la vigencia de este contrato y hasta cinco (5) años luego de su terminación 
+          <strong>EL(LA) CONTRATADO(A)</strong> no divulgará a persona alguna, bien sea natural o jurídica, 
+          directa o indirectamente, información a la que tendrá acceso y que pertenezca de manera exclusiva a 
+          <strong>LA EMPRESA</strong> y/o a las compañías mencionadas en la cláusula anterior, sin la previa
+          autorización expresa de un funcionario autorizado de <strong>LA EMPRESA</strong> dada por
+          escrito. En caso de incumplimiento de esta obligación <strong>LA EMPRESA</strong> podrá:
+          (a) rescindir justificadamente el presente contrato, (b) intentar acciones legales
+          por daños y perjuicios, tanto si el incumplimiento ocurriera durante la vigencia
+          de este contrato o en un momento posterior.
+        </p>
+        <t t-if="o.employee_id.has_autorized">
+          <t t-set="cedula_v" t-value="o.employee_id.ci_autorizate"/>
+          <t t-set="cuenta" t-value="o.employee_id.account_number_autorizate"/>
+          <t t-set="nombre" t-value="o.employee_id.name_autorizate"/>
+          <t t-set="banco" t-value="o.employee_id.bank_autorizate or ''"/>
+        </t>
+        <t t-else="">
+          <t t-set="cedula" t-value="o.employee_id.identification_id_2"/>
+          <t t-set="cuenta" t-value="o.employee_id.account_number_2"/>
+          <t t-set="cedula_v" t-value="o.employee_id.rif.replace('-', '')"/>
+          <t t-set="nombre" t-value="o.employee_id.name"/>
+          <t t-set="banco" t-value="o.employee_id.bank_account_id_emp_2 or ''"/>
+        </t>
+        <p align="justify">
+          <strong><u>SEXTA:</u> Salario y forma de pago:</strong>
+          Por los servicios objeto de este contrato, 
+          EL(LA) CONTRATADO(A), recibirá un salario de
+          <span t-esc="o.numero_to_letras_contract(o.wage)"/> BOLÍVARES (Bs. <span t-field="o.wage"/> ). La manera de pago será mensual dividida y pagada en dos quincenas en
+          las que están comprendidos los días feriados y su descanso, a través de una cuenta
+          de nómina en el Banco <span t-esc="banco.name"/> N° <span t-esc="cuenta"/>. Se le participa 
+          <strong>EL(LA) CONTRATADO(A)</strong> que se efectuarán las deducciones pertinentes por ley,
+          establecidas en el S.S.O, R.P.E., INCES y FAOV.
+        </p>
+        <p align="justify">
+          <strong> Parágrafo Primero:</strong>
+          Las retribuciones establecidas en esta cláusula, serán las únicas
+        y exclusivas remuneraciones a las cuales tendrá derecho <strong>EL(LA) CONTRATADO(A)</strong>
+         con ocasión del servicio prestado, y constituirán de manera única y exclusiva la
+        composición del salario.
+        </p>
+        <p align="justify">
+          <strong>Parágrafo Segundo:</strong>
+          En el transcurso de la relación laboral, se entenderá informado
+          a <strong>EL(LA) CONTRATADO(A)</strong> de las remuneraciones que le corresponden de
+          acuerdo al servicio prestado, con la suscripción de los recibos de pago.
+        </p>
+        <p align="justify">
+          <strong><u>SÉPTIMA:</u> Jornada y horario: EL(LA) CONTRATADO(A)</strong>
+          se obliga a prestar su
+        servicio personal a <strong>LA EMPRESA</strong>, en las siguientes condiciones de tiempo: Jornada
+        especial y convenida de turno de (<strong t-esc="len(list(set(o.resource_calendar_id.mapped('attendance_ids.dayofweek'))))"/>) días trabajados con  (<strong t-field="o.resource_calendar_id.rest_days"/>) días
+        libres. Correspondiendo una (<strong t-field="o.resource_calendar_id.interjournal_rest"/>) hora de descanso inter-jornada diaria y
+        alimentación.
+        </p>
+        
+        <p align="justify">
+          <strong>Parágrafo Primero:</strong>
+          Queda entendido que <strong>EL(LA) TRABAJADOR(A)</strong>, deberá
+          cumplir el horario de trabajo pactado en esta cláusula, hasta tanto no se celebre un
+          pacto (a futuro) mediante el cual las partes acuerden una jornada de trabajo distinta.
+        </p>
+        <p align="justify">
+          <strong><u>OCTAVA:</u> Lugar de trabajo:</strong>
+          <strong>EL(LA) CONTRATADO(A)</strong> prestará sus servicios en
+          la Planta Berakah ubicada en Sector Guacamayo, Vía Santa Bárbara, Fundo El
+          Moriche, Upata, Estado Bolívar, con pernocta y alimentación. No obstante, 
+          <strong>EL(LA) CONTRATADO(A)</strong> se obliga a atender cualquier reunión, curso o conferencia para
+          la que sea requerido allá donde ésta tenga lugar. <strong>EL(LA) CONTRATADO(A)</strong> por
+          causa de la naturaleza de sus funciones, acepta que el lugar de trabajo podrá
+          modificarse debiendo prestar sus servicios en aquellos lugares que se le asignen,
+          dentro o fuera del país; en el entendido de que ello forma parte de sus condiciones
+          de trabajo y que el ejercicio de dicha facultad no constituirá causal de despido
+          indirecto ni de retiro justificado.
+        </p>
+        <p align="justify">
+          <strong><u>NOVENA:</u> Higiene y Seguridad industrial: EL(LA) CONTRATADO(A)</strong>
+          declara que ha sido advertido de todos y cada uno de los riesgos que rodean no sólo las
+          actividades de <strong>LA EMPRESA</strong>, sino también de aquellos propios a los de sus tareas,
+          trabajos y/o actividades que constituyen el objeto del contrato, todos los cuales se
+          obliga a prevenir. Asimismo, reconoce que <strong>LA EMPRESA</strong> le ha hecho entrega de los
+          útiles de higiene, seguridad industrial y protección personal requeridos para las
+          tareas, trabajos y/o actividades que constituyen el objeto del contrato y se obliga a
+          cumplir las disposiciones de la Ley Orgánica del Trabajo, Ley Orgánica de
+          Prevención, Condiciones y Medio Ambiente del Trabajo, el Reglamento de Higiene y
+          Seguridad Industrial y los reglamentos y/o normas establecidas por <strong>LA EMPRESA</strong>,
+          en los distintos sitios donde se encuentre prestando sus servicios, reportando a 
+          <strong>LA EMPRESA</strong>, con la mayor brevedad posible, cualquier condición insegura que hubiere
+          observado en la ejecución de sus funciones. <strong>LA EMPRESA</strong> se obliga a reponer los
+          útiles o implementos de higiene y seguridad industrial que por su uso resulten
+          deteriorados, los cuales <strong>EL(LA) CONTRATADO(A)</strong> entregará para su control y
+          reposición. Si tales útiles o implementos se dañasen por culpa de <strong>EL(LA) CONTRATADO(A)</strong>, o se le perdiesen, 
+          éste deberá reponerlos o pagarle a <strong>LA EMPRESA</strong> una suma equivalente a su valor de reposición.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA:</u> LA EMPRESA concederá a EL(LA) CONTRATADO(A) el siguiente
+            beneficio sin carácter salarial:</strong>
+            Beneficio de alimentación que va a ser pagado de
+            acuerdo a lo decretado por El Ejecutivo Nacional, publicado en Gaceta Oficial de la
+            República Bolivariana de Venezuela.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA PRIMERA:</u> Vacaciones: LA EMPRESA</strong>
+          conviene en pagar a <strong>EL(LA) CONTRATADO(A)</strong> cuarenta y cinco (45) días de Vacaciones. Así mismo, y con
+          fundamento en el Artículo 192 de la LOTTT LA EMPRESA conviene en cancelar
+          treinta (30) días de Bono Vacacional.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA SEGUNDA:</u> Utilidades: LA EMPRESA</strong> pagará a EL(LA) CONTRATADO(A) la cantidad de noventa (90) días de Utilidad por meses completos laborados del ejercicio fiscal. 
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA TERCERA:</u> Faltas Graves: EL(LA) CONTRATADO(A),</strong>
+          sin perjuicio de las demás causales de terminación justificada previstas por los artículos 79, 80 de la
+          Ley Orgánica del Trabajo, Las Trabajadoras y Trabajadores (LOTTT), conviene en
+          que si incumple cualquiera de las obligaciones nacidas de este contrato o por causa
+          de la relación laboral, se considerará que incurre en falta grave a las obligaciones que
+          le impone el contrato de trabajo dando lugar a su inmediata terminación por causa
+          justificada o a la aplicación de las medidas disciplinarias previstas en el Reglamento
+          Interno de <strong>LA EMPRESA</strong> o facultadas por la legislación laboral, a elección de 
+          <strong>LA EMPRESA</strong>, ello sin perjuicio del ejercicio separado o conjunto de otras acciones
+          laborales, civiles, penales o de cualquier otra naturaleza a las cuales hubiera lugar.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA CUARTA:</u> Inasistencias:</strong>
+          Sin perjuicio de otros efectos y/o sanciones por
+          inasistencias, cuando <strong>EL(LA) CONTRATADO(A)</strong> falte, durante la jornada semanal,
+          dos (2) días o más perderá el derecho al pago de los días de descanso remunerado.
+          Conforme al artículo 79 de la LOTTT, cuando <strong>EL(LA) CONTRATADO(A)</strong> falte días
+          sin causa justificada y <strong>LA EMPRESA</strong> le hubiera pagado los salarios correspondientes
+          a esos días, tal período de inasistencia, y su pago, se imputará a las vacaciones.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA QUINTA:</u> Aspectos No Previstos:</strong>
+          Queda entendido entre las partes, que en todo lo no previsto en el presente contrato se aplicará lo establecido en las leyes
+          que rigen en materia del trabajo y la seguridad social.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA SEXTA:</u> Notificaciones:</strong>
+          Cualquier notificación que deseen hacerse las
+          partes de este Contrato, deberá hacerse necesariamente por escrito y serle notificada
+          a la otra a las direcciones de las partes que seguidamente se señalan: Si va dirigida
+          a <strong>LA EMPRESA</strong>: <span t-field="o.company_id.street"/> <span t-field="o.company_id.city"/>, Estado <span t-field="o.company_id.state_id.name"/>. Si va dirigida a 
+          <strong>EL(LA) CONTRATADO(A)</strong>: <strong t-field="o.employee_id.name"/>.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA SÉPTIMA:</u> Constancia de la entrega del ejemplar del Contrato:</strong>
+          Se deja constancia que en ésta misma oportunidad le es entregado a <strong>EL(LA) CONTRATADO(A)</strong>, 
+          un ejemplar original de este contrato suscrito por <strong>LA EMPRESA</strong>, en fe de lo cual
+          suscribe este contrato en señal de aceptación del contenido de sus estipulaciones,
+          las cuales se obliga a cumplir a cabalidad y como acuse de haberlo recibido.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA OCTAVA:</u> De la acreditación de las Prestaciones Sociales: EL(LA) CONTRATADO(A)</strong>
+          de acuerdo con lo establecido en el artículo 143 de la Ley
+          Orgánica del Trabajo, Las Trabajadoras y los Trabajadores, para el caso que su
+          tiempo de servicio sea igual o superior a tres (03) meses, manifiesta su voluntad y
+          autoriza a <strong>LA EMPRESA</strong>, a que los depósitos trimestrales anuales por concepto de
+          garantía de las prestaciones sociales, sean acreditados en la contabilidad de <strong>LA EMPRESA</strong>.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA NOVENA:</u> Domicilio Especial:</strong>
+          Las partes designan a la Ciudad de Puerto
+          Ordaz, como domicilio especial a la jurisdicción de cuyas autoridades administrativas
+          o jurisdiccionales declaran someterse. 
+        </p>
+  
+              <p align="justify"><span t-field="o.company_id.city"/>,<span t-esc="datetime.date.today().strftime('a los %d del mes %B del año %Y')"/>.</p>
+              <p align="center"><strong>POR LA EMPRESA</strong></p>
+              <div class="row">
+                <div class="col-4"><strong>Presidente:</strong></div>
+                <div class="col-4"><strong>Gerencia de RRHH</strong></div>
+                <div class="col-4"><strong>Sello</strong></div>
+              </div>
+              <p align="center"><strong>EL(LA) CONTRATADO(A)</strong></p>
+              <div class="row">
+                <div class="col-4"><strong>Firma autógrafa:</strong></div>
+                <div class="col-4"><strong>Fecha:</strong></div>
+                <div class="col-4"><strong>Hora:</strong></div>
+              </div>
+              <p align="center"><strong>Huellas dactilares del Contratado</strong></p>
+             
+             <div class="col-4 text-center">
+              <table class="table">
+                <tr style="line-height:6;" class="align-bottom">
+                  <td style="padding-top:40px;color:gray;">
+                    Izquierdo
+                  </td>
+                  <td style="padding-top:40px;color:gray;">
+                    Derecho
+                  </td>
+                </tr>
+                <tr style="background-color:gray;">
+                  <td colspan="2">
+                    Huellas
+                  </td>
+                </tr>
+              </table>
+          </div>
+      </t>
+
+      <t t-name="l10n_ve_payroll.template_contracto_obra_determinada">
+        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+        <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+        <div class="row text-end">
+          <strong t-field="o.company_id.lawyer_ref.name"/>
+        </div>
+        <div class="row text-end">
+          <strong>Inpreabogado N° </strong><strong t-field="o.company_id.num_ipsa"/>
+        </div>
+        <p align="center">
+            <strong>CONTRATO DE TRABAJO PRESTACIÓN DE SERVICIOS</strong>
+        </p>
+        <p align="justify">
+            Entre <strong t-field="o.company_id.name"/>, Sociedad Mercantil debidamente
+            inscrita <span t-field="o.company_id.registrofiscal"/>, Rif <strong t-field="o.company_id.rif"/>, 
+            representada en este acto por su Presidente <strong>JULIO ERNESTO MENDOZA DELGADO</strong>, venezolano, mayor
+            de edad, hábil en derecho, titular de la cédula de identidad N V-17.571.785, con
+            Registro de Información Fiscal Rif V-175717850, empresa domiciliada en la Calle
+            Ricaurte, Centro Comercial La Pradera, Nivel piso 1, Local L-28, , Sector Casco
+            Central, Municipio Piar, Upata, Estado Bolívar, Zona Postal 8052, quien en lo
+            sucesivo se denominará <strong>LA EMPLEADORA</strong>, por una parte y por la otra, el(la) ciudadano(a)  
+            <strong t-field="o.employee_id.name"/>, venezolano(a), de <strong t-esc="o.numero_to_letras_contract(o.employee_id.employee_age)"/> (<strong t-field="o.employee_id.employee_age"/>) años, 
+            hábil en derecho, titular de la cédula de identidad <strong t-field="o.employee_id.identification_id_2"/>, 
+            domiciliado(a) en <span t-field="o.employee_id.street"/>, en la Ciudad <span t-field="o.employee_id.city_id.name"/>, Estado <span t-field="o.employee_id.state_id.name"/>, 
+            quien en lo sucesivo,  se designará como <strong>EL(LA) CONTRATADO(A)</strong> hemos convenido en celebrar, 
+            un Contrato de Prestación de Servicios por Honorarios Profesionales, el cual en lo
+            sucesivo y a los únicos efectos de este documento se abreviará como <strong>ESTE CONTRATO</strong>, y se regulará por las cláusulas que a continuación se expresan:
+        </p>
+
+        <p align="justify">
+          <strong><u>CLÁUSULA PRIMERA:</u> LA EMPRESA</strong>contrata bajo la modalidad de Prestación de
+          Servicios Profesionales a <strong>EL CONTRATADO</strong>, quien se obliga a prestar para <strong>LA EMPRESA</strong> 
+          sus servicios profesionales de manera independiente como <span t-field="o.job_id.name"/> de
+          de manera independiente, es decir, sin que exista subordinación jurídica, prestando
+          Servicios en el área de <span t-field="o.department_id.name"/>, en los siguientes asuntos: <span t-field="o.job_id.description"/>
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA SEGUNDA</u> Duración del contrato:</strong>
+          El presente contrato tendrá una duración de (<strong t-esc="round((o.date_end-o.date_start).days/30)"/>) meses, contados desde el desde el día <span t-esc="yas[o.date_start.weekday()] if o.date_start else ''"/> <span t-esc="o.date_start.strftime('%d') if o.date_start else ''"/> de <span t-esc="das[o.date_start.strftime('%m')] if o.date_start else ''"/> de <span t-esc="o.date_start.strftime('%Y') if o.date_start else ''"/>
+        hasta el desde el día <span t-esc="yas[o.date_end.weekday()] if o.date_end else ''"/> <span t-esc="o.date_end.strftime('%d') if o.date_end else ''"/> de <span t-esc="das[o.date_end.strftime('%m')] if o.date_end else ''"/> de <span t-esc="o.date_end.strftime('%Y') if o.date_end else ''"/>.Las partes convienen que la duración del
+        contrato pueda dar lugar a una prórroga adicional del contrato.
+        </p>
+        
+        <p align="justify">
+          <strong><u>CLÁUSULA TERCERA:</u> Descripción de los servicios a prestar: EL(LA) CONTRATADO(A)</strong> Se contrata para prestar servicios en el área de
+          <span t-field="o.department_id.name"/>. Se describe en forma enunciativa que los procesos,
+          servicios y funciones atinentes a su cargo comprende entre otros los siguientes:
+          <span t-field="o.job_id.description"/>
+        </p>
+        
+        <p align="justify">
+          <strong><u>CLÁUSULA CUARTA:</u> Conocimiento, Aptitud: EL(LA) CONTRATADO(A)</strong>
+          declara poseer los
+          conocimientos, la experiencia y la capacidad necesaria para la ejecución de las
+          tareas, trabajos y/o las actividades de alta responsabilidad que constituyen el objeto
+          del contrato.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA QUINTA:</u>Índole de las Funciones y Confidencialidad:</strong>
+          Durante la vigencia de este contrato y hasta cinco (5) años luego de su terminación 
+          <strong>EL(LA) CONTRATADO(A)</strong> no divulgará a persona alguna, bien sea natural o jurídica, directa o
+          indirectamente, información a la que tendrá acceso y que pertenezca de manera
+          exclusiva a <strong>LA EMPRESA</strong>, sin la previa autorización expresa de un funcionario
+          autorizado de <strong>LA EMPRESA</strong> dada por escrito. En caso de incumplimiento de esta
+          obligación <strong>LA EMPRESA</strong> podrá: (a) rescindir justificadamente el presente contrato,
+          (b) intentar acciones legales por daños y perjuicios, tanto si el incumplimiento
+          ocurriera durante la vigencia de este contrato o en un momento posterior. Además se
+          compromete de manera expresa, tanto durante la vigencia del contrato, como
+          después de su extinción, a no difundir, transmitir, revelar a terceras personas
+          cualquier información de <strong>LA EMPRESA</strong>, a la que tenga acceso como consecuencia
+          del desempeño de su servicio, ni a utilizar tal información en interés propio o de sus
+          familiares o amigos. La prohibición establecida en la presente cláusula se extiende a
+          la reproducción en cualquier soporte de la información de <strong>LA EMPRESA</strong>, a la que
+          tenga acceso sobre procedimientos y sistemas de organización, programas
+          informáticos o cualquier otro tipo de información interna, salvo que tal información sea
+          estrictamente necesaria para el desarrollo del contenido inherente de su servicio y se
+          realice dentro del ámbito de <strong>LA EMPRESA</strong> En tal sentido, todas las notas, informes
+          y cualesquiera otros documentos (incluyendo los almacenados en dispositivos
+          informáticos), elaborados por <strong>EL(LA) CONTRATADO(A)</strong> durante la vigencia del presente
+          contrato y que se refieran a la actividad de la empresa son propiedad de 
+          <strong>LA EMPRESA</strong> y serán diligentemente custodiados en la <strong t-field="o.company_id.name"/>.
+        </p>
+        
+        <t t-if="o.employee_id.has_autorized">
+          <t t-set="cedula_v" t-value="o.employee_id.ci_autorizate"/>
+          <t t-set="cuenta" t-value="o.employee_id.account_number_autorizate"/>
+          <t t-set="nombre" t-value="o.employee_id.name_autorizate"/>
+          <t t-set="banco" t-value="o.employee_id.bank_autorizate or ''"/>
+        </t>
+        <t t-else="">
+          <t t-set="cedula" t-value="o.employee_id.identification_id_2"/>
+          <t t-set="cuenta" t-value="o.employee_id.account_number_2"/>
+          <t t-set="cedula_v" t-value="o.employee_id.rif.replace('-', '')"/>
+          <t t-set="nombre" t-value="o.employee_id.name"/>
+          <t t-set="banco" t-value="o.employee_id.bank_account_id_emp_2 or ''"/>
+        </t>
+        <p align="justify">
+          <strong><u>CLÁUSULA SEXTA:</u> Honorarios y forma de pago: LA EMPRESA</strong>
+          pagará, por concepto de honorarios, a <strong>EL(LA) CONTRATADO(A)</strong>, 
+          la suma de<span t-esc="o.numero_to_letras_contract(o.wage_ref)"/> DÓLARES DE
+          LOS ESTADOS UNIDOS DE NORTEAMÉRICA  (US$ <span t-field="o.wage_ref"/> ). Por horas
+          trabajadas, con un mínimo de horas trabajadas de (<strong t-field="o.resource_calendar_id.full_time_required_hours"/>), horas al mes,
+          convenida por las partes como moneda de cuenta, que a los efectos del artículo 130
+          de Ley del Banco Central de Venezuela son equivalentes a <span t-esc="o.numero_to_letras_contract(o.wage)"/> (Bs. <span t-field="o.wage"/> ).
+          expresada al tipo de cambio oficial vigente a
+          la fecha de suscripción del presente contrato (CONVENIO CAMBIARIO Nº 01) de las
+          operaciones de divisas con tipo de cambio complementario flotante mercado (DICOM) de 
+          <span t-esc="o.numero_to_letras_contract(o.cesta_ticket)"/> (Bs. <span t-field="o.cesta_ticket"/> ).
+          de la tasa de cambio DICOM para el momento de la firma, por cada dólar de los Estados Unidos
+          de Norteamérica  (US$. 1,00 = Bs <span t-field="o.tax_today"/>)  que <strong>LA EMPRESA</strong> se compromete a
+          cancelar a <strong>EL(LA) CONTRATADO(A)</strong>. La forma de pago será mensual dividida y pagada en
+          dos quincenas, a través de una cuenta personal que a tales efectos suministre <strong>EL(LA) CONTRATADO(A)</strong>
+          <strong>BANCO</strong> <span t-esc="banco.name"/> de la cta. N° <span t-esc="cuenta"/>. 
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA SÉPTIMA:</u> Obligaciones: LA EMPRESA</strong> deberá facilitar acceso a la
+          información y elementos que sean necesarios, de manera oportuna, para la debida
+          ejecución del objeto del contrato, y, estará obligado a cumplir con lo estipulado en las
+          demás cláusulas y condiciones previstas en este documento. <strong>EL(LA) CONTRATADO(A)</strong>
+          deberá cumplir en forma eficiente y oportuna los trabajos encomendados y aquellas
+          obligaciones que se generen de acuerdo con la naturaleza del servicio.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA OCTAVA:</u> Jornada y horario: EL(LA) CONTRATADO(A)</strong>
+          estará disponible de
+          en el horario comprendido de: 8:00 am. a 5:00 pm. de lunes a viernes, horario
+          administrativo, cuando así lo requiera <strong>LA EMPRESA</strong> de acuerdo a las actividades
+          asignadas.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA NOVENA:</u>: Lugar de trabajo: EL(LA) CONTRATADO(A)</strong> prestará sus servicios desde el lugar en que se encuentre. 
+        </p>
+        
+        <p align="justify">
+          <strong><u>CLÁUSULA DÉCIMA:</u>Independencia: EL(LA) CONTRATADO(A)</strong>actuará por su cuenta,
+          con autonomía y sin que exista relación laboral, ni subordinación con <strong>LA EMPRESA</strong>.
+          Sus derechos se limitarán por la naturaleza del contrato, a exigir el cumplimiento de
+          las obligaciones del contratante y el pago oportuno de su remuneración fijada en este
+          documento.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA DÉCIMA PRIMERA:</u>Terminación: EL(LA) CONTRATADO(A)</strong>, conviene en
+          que el presente contrato terminará por la expiración del tiempo señalado en la
+          cláusula primera o por el incumplimiento de cualquiera de las obligaciones nacidas de
+          este contrato, ello sin perjuicio del ejercicio separado o conjunto de otras acciones
+          laborales, civiles, penales o de cualquier otra naturaleza a las cuales hubiera lugar.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA DÉCIMA SEGUNDA:</u> Aspectos No Previstos:</strong>
+          Queda entendido entre las partes que todo lo no previsto en el presente contrato se aplicará lo establecido en las leyes que rigen en materia laboral.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA DÉCIMA TERCERA:</u> Notificaciones:</strong>
+          Cualquier notificación que deseen hacerse las partes de este Contrato, deberá hacerse necesariamente por escrito y
+          serle notificada a la otra a las direcciones de las partes que seguidamente se señalan:
+          <br/>
+          Si va dirigida a <strong>LA EMPRESA</strong>: <span t-field="o.company_id.street"/> <span t-field="o.company_id.city"/>, Estado <span t-field="o.company_id.state_id.name"/>. 
+          Teléfonos: <span t-field="o.company_id.phone"/>.
+          <br />
+          Si va dirigida a LA CONTRATADA: Calle
+          <span t-field="o.employee_id.street"/>, Casa N° <span t-field="o.employee_id.city_id.name"/>, Estado <span t-field="o.employee_id.state_id.name"/>. Correo electrónico:
+          <span t-field="o.employee_id.personal_email"/>. Teléfono: <span t-field="o.employee_id.telf_contacto"/>.
+        </p>
+        <p align="justify">
+          <strong><u>DÉCIMA PRIMERA:</u> Vacaciones: LA EMPRESA</strong>
+          conviene en pagar a <strong>EL(LA) CONTRATADO(A)</strong> cuarenta y cinco (45) días de Vacaciones. Así mismo, y con
+          fundamento en el Artículo 192 de la LOTTT LA EMPRESA conviene en cancelar
+          treinta (30) días de Bono Vacacional.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA DÉCIMA CUARTA: </u> Constancia de la entrega del ejemplar del Contrato:</strong> 
+          Se deja constancia que en ésta misma oportunidad le es entregado a 
+          <strong>EL(LA) CONTRATADO(A)</strong>, un ejemplar original de este contrato suscrito por <strong>LA EMPRESA</strong>, en
+          fe de lo cual suscribe este contrato en señal de aceptación del contenido de sus
+          estipulaciones, las cuales se obliga a cumplir a cabalidad y como acuse de haberlo
+          recibido.
+        </p>
+        <p align="justify">
+          <strong><u>CLÁUSULA DÉCIMA QUINTA:</u> Domicilio Especial:</strong>
+          Las partes designan a la Ciudad de Puerto Ordaz, como domicilio especial a la jurisdicción de cuyas autoridades
+          administrativas o jurisdiccionales declaran someterse.
+        </p>
+  
+              <p align="justify"><span t-field="o.company_id.city"/>,<span t-esc="datetime.date.today().strftime('a los %d del mes %B del año %Y')"/>.</p>
+              <p align="center"><strong>POR LA EMPRESA</strong></p>
+              <div class="row bordered">
+                <div class="col-4"><strong>Presidente:</strong></div>
+                <div class="col-4"><strong>Gerencia de RRHH</strong></div>
+                <div class="col-4"><strong>Sello</strong></div>
+              </div>
+              <p align="center"><strong>EL(LA) CONTRATADO(A)</strong></p>
+              <div class="row bordered">
+                <div class="col-4"><strong>Firma autógrafa:</strong></div>
+                <div class="col-4"><strong>Fecha:</strong></div>
+                <div class="col-4"><strong>Hora:</strong></div>
+              </div>
+              <p align="center"><strong>Huellas dactilares del Contratado</strong></p>
+             
+             <div class="col-4 text-center">
+              <table class="table">
+                <tr style="line-height:6;" class="align-bottom">
+                  <td style="padding-top:40px;color:gray;">
+                    Izquierdo
+                  </td>
+                  <td style="padding-top:40px;color:gray;">
+                    Derecho
+                  </td>
+                </tr>
+                <tr style="background-color:gray;">
+                  <td colspan="2">
+                    Huellas
+                  </td>
+                </tr>
+              </table>
+          </div>
+      </t>
+
+      <t t-name="l10n_ve_payroll.template_contracto_prorroga">
+        <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+        <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+        <div class="row text-end">
+          <strong t-field="o.company_id.lawyer_ref.name"/>
+        </div>
+        <div class="row text-end">
+          <strong>Inpreabogado N° </strong><strong t-field="o.company_id.num_ipsa"/>
+        </div>
+        <p align="center">
+            <strong><u>EXTENSIÓN O PRÓRROGA AL CONTRATO DE TRABAJO POR TIEMPO DETERMINADO</u></strong>
+        </p>
+        <p align="justify">
+            Entre <strong t-field="o.company_id.name"/>, Sociedad Mercantil debidamente
+            inscrita <span t-field="o.company_id.registrofiscal"/>, Rif <strong t-field="o.company_id.rif"/>, 
+            representada en este acto por su Presidente <strong>JULIO ERNESTO MENDOZA DELGADO</strong>, venezolano, mayor
+            de edad, hábil en derecho, titular de la cédula de identidad N V-17.571.785, con
+            Registro de Información Fiscal Rif V-175717850, empresa domiciliada en la Calle
+            Ricaurte, Centro Comercial La Pradera, Nivel piso 1, Local L-28, , Sector Casco
+            Central, Municipio Piar, Upata, Estado Bolívar, Zona Postal 8052, quien en lo
+            sucesivo se denominará <strong>LA EMPRESA</strong>, por una parte y por la otra, el(la) ciudadano(a)  
+            <strong t-field="o.employee_id.name"/>, venezolano(a), de <strong t-esc="o.numero_to_letras_contract(o.employee_id.employee_age)"/> (<strong t-field="o.employee_id.employee_age"/>) años, 
+            hábil en derecho, titular de la cédula de identidad <strong t-field="o.employee_id.identification_id_2"/>, 
+            domiciliado(a) en <span t-field="o.employee_id.street"/>, en la Ciudad <span t-field="o.employee_id.city_id.name"/>, Estado <span t-field="o.employee_id.state_id.name"/>, 
+            quien en lo sucesivo,  se designará como <strong>EL(LA) CONTRATADO(A)</strong> hemos convenido en celebrar la
+            presente <strong>EXTENSIÓN o PRÓRROGA</strong> del contrato por tiempo determinado, el cual
+            se regirá por las siguientes cláusulas:
+        </p>
+
+        <p align="justify"> 
+          <strong><u>PRIMERA:</u></strong>Las partes manifiestan conocer la existencia del Contrato a Tiempo
+          Determinado firmado entre éstas en fecha <span t-esc="yas[o.parent_id.original_date_start.weekday()] if o.parent_id.original_date_start else ''"/> <span t-esc="o.parent_id.original_date_start.strftime('%d') if o.parent_id.original_date_start else ''"/> de <span t-esc="das[o.parent_id.original_date_start.strftime('%m')] if o.parent_id.original_date_start else ''"/> de <span t-esc="o.parent_id.original_date_start.strftime('%Y') if o.parent_id.original_date_start else ''"/> hasta
+          el <span t-esc="yas[o.parent_id.original_date_end.weekday()] if o.parent_id.original_date_end else ''"/> <span t-esc="o.parent_id.original_date_end.strftime('%d') if o.parent_id.original_date_end else ''"/> de <span t-esc="das[o.parent_id.original_date_end.strftime('%m')] if o.parent_id.original_date_end else ''"/> de <span t-esc="o.parent_id.original_date_end.strftime('%Y') if o.parent_id.original_date_end else ''"/>, y a cuyo contenido declaran someterse.
+        </p>
+        <t t-set="extendperiod" t-value="int((o.fecha_fin_prorroga-o.fecha_inicio_prorroga).days/30)"/>
+        
+        <p align="justify">
+          <strong><u>SEGUNDA:</u></strong>
+          Las partes de conformidad con lo establecido en el artículo 62 de la Ley
+          Orgánica del Trabajo, de los Trabajadores y Trabajadoras, en concordancia con lo
+          dispuesto en el artículo 31 del Reglamento de la Ley del Trabajo, acuerdan que la
+          relación laboral a tiempo determinado iniciada en fecha <span t-esc="o.parent_id.original_date_start.strftime('%d') if o.parent_id.original_date_start else ''"/> de <span t-esc="das[o.parent_id.original_date_start.strftime('%m')] if o.parent_id.original_date_start else ''"/> de <span t-esc="o.parent_id.original_date_start.strftime('%Y') if o.parent_id.original_date_start else ''"/>
+          debe extenderse por un periodo de  (<span t-esc="extendperiod"/>) meses, a partir de la firma del
+          mismo, es decir, desde el día <span t-esc="yas[o.fecha_inicio_prorroga.weekday()] if o.fecha_inicio_prorroga else ''"/> <span t-esc="o.fecha_inicio_prorroga.strftime('%d') if o.fecha_inicio_prorroga else ''"/> de <span t-esc="das[o.fecha_inicio_prorroga.strftime('%m')] if o.fecha_inicio_prorroga else ''"/> de <span t-esc="o.fecha_inicio_prorroga.strftime('%Y') if o.fecha_inicio_prorroga else ''"/>
+          hasta el <span t-esc="yas[o.fecha_fin_prorroga.weekday()] if o.fecha_fin_prorroga else ''"/> <span t-esc="o.fecha_fin_prorroga.strftime('%d') if o.fecha_fin_prorroga else ''"/> de <span t-esc="das[o.fecha_fin_prorroga.strftime('%m')] if o.fecha_fin_prorroga else ''"/> de <span t-esc="o.fecha_fin_prorroga.strftime('%Y') if o.fecha_fin_prorroga else ''"/>, 
+          por cuanto es necesario este tiempo pactado para dar cumplimiento a lo acordado entre las partes, en el contrato laboral celebrado
+          de conformidad con lo dispuesto en el artículo 64 de la Ley Orgánica del Trabajo, de los Trabajadores y Trabajadoras.
+        </p>
+        <t t-if="o.employee_id.has_autorized">
+          <t t-set="cedula_v" t-value="o.employee_id.ci_autorizate"/>
+          <t t-set="cuenta" t-value="o.employee_id.account_number_autorizate"/>
+          <t t-set="nombre" t-value="o.employee_id.name_autorizate"/>
+          <t t-set="banco" t-value="o.employee_id.bank_autorizate or ''"/>
+        </t>
+        <t t-else="">
+          <t t-set="cedula" t-value="o.employee_id.identification_id_2"/>
+          <t t-set="cuenta" t-value="o.employee_id.account_number_2"/>
+          <t t-set="cedula_v" t-value="o.employee_id.rif.replace('-', '')"/>
+          <t t-set="nombre" t-value="o.employee_id.name"/>
+          <t t-set="banco" t-value="o.employee_id.bank_account_id_emp_2 or ''"/>
+        </t>
+        <p align="justify">
+          <strong><u>TERCERA:</u> LA EMPRESA y EL(LA) CONTRATADO(A)</strong> aceptan la modificación estipulada en <strong>CLÁUSULA SEXTA</strong> quedando redactada de la siguiente manera:
+          <strong>MODIFICACIÓN:</strong> Salario y forma de pago: Por los servicios objeto de este contrato, <strong>EL CONTRATADO</strong>,
+          recibirá un salario de <span t-esc="o.numero_to_letras_contract(o.wage)"/> BOLÍVARES, (Bs.<span t-field="o.wage"/>). La forma de pago será mensual dividida y pagada en
+          dos quincenas en las que están comprendidos los días feriados y su descanso, a
+          través de una cuenta de nómina en el Banco <span t-esc="banco.name"/> en la cta. corriente N°
+          <span t-esc="cuenta"/>. Se le participa <strong>EL(LA) CONTRATADO(A)</strong> que se efectuarán las
+          deducciones pertinentes por ley, establecidas en el <strong>S.S.O, R.P.E., INCES y FAOV.</strong>
+        </p>
+          
+ 
+
+        <p align="justify">
+          <strong>Parágrafo Primero:</strong>
+          Las retribuciones establecidas en esta cláusula, serán las únicas
+          y exclusivas remuneraciones a las cuales tendrá derecho <strong>EL(LA) CONTRATADO(A)</strong>
+          con ocasión del servicio prestado, y constituirán de manera única y exclusiva la
+          composición del salario.
+        </p>
+        <p align="justify">
+          <strong>Parágrafo Segundo:</strong>
+          En el transcurso de la relación laboral, se entenderá informado
+          a <strong>EL(LA) CONTRATADO(A)</strong> de las remuneraciones que le corresponden de
+          acuerdo al servicio prestado, con la suscripción de los recibos de pago.
+        </p>
+
+         
+        <p align="justify">
+          <strong><u>CUARTA:</u></strong>
+          En tal sentido, <strong>EL(LA) CONTRATADO(A)</strong> manifiesta cumplir con las
+          obligaciones que impone la relación de trabajo ya pactada con <strong>LA EMPRESA</strong>, en las
+          mismas condiciones acordadas en el contrato de trabajo a tiempo determinado
+          firmado entre las partes en fecha <span t-esc="yas[o.parent_id.original_date_start.weekday()] if o.parent_id.original_date_start else ''"/> <span t-esc="o.parent_id.original_date_start.strftime('%d') if o.parent_id.original_date_start else ''"/> de <span t-esc="das[o.parent_id.original_date_start.strftime('%m')] if o.parent_id.original_date_start else ''"/> de <span t-esc="o.parent_id.original_date_start.strftime('%Y') if o.parent_id.original_date_start else ''"/>
+        </p>
+        <p align="justify">
+          <strong><u>QUINTA:</u></strong>
+          Ambas partes acuerdan y <strong>EL(LA) CONTRATADO(A)</strong> así lo acepta, que
+        cumplido el lapso pactado en el presente documento, se considerará extinguida de
+        hecho y de pleno derecho la relación que los une hasta esa fecha. Por lo tanto,
+        vencida la prórroga acordada <strong>EL(LA) CONTRATADO(A)</strong> dejará de cumplir con las
+        obligaciones que le impone la relación de trabajo y <strong>LA EMPRESA</strong> cesará en su
+        obligación de pagar el salario pactado por las partes en la presente extensión o
+        prorroga al contrato de trabajo a tiempo determinado, de fecha <span t-esc="o.fecha_renovacion.strftime('%d') if o.fecha_renovacion else ''"/> de <span t-esc="das[o.fecha_renovacion.strftime('%m')] if o.fecha_renovacion else ''"/> de   <span t-esc="o.fecha_renovacion.strftime('%Y') if o.fecha_renovacion else ''"/>.
+        Sin embargo, <strong>LA EMPRESA</strong> puede ofrecer a 
+        <strong>EL(LA) CONTRATADO(A)</strong> la posibilidad de continuar trabajando para LA EMPRESA, una
+        vez vencido el tiempo de prórroga acordado en este documento.
+        Para todos los efectos jurídicos del presente contrato se elige como domicilio procesal
+        la ciudad de Puerto Ordaz, a cuya jurisdicción las partes deciden acogerse. Se hacen
+        dos (02), ejemplares de un mismo tenor y a un sólo efecto. 
+        </p>
+  
+              <p align="justify"><span t-field="o.company_id.city"/>,<span t-esc="datetime.date.today().strftime('a los %d del mes %B del año %Y')"/>.</p>
+              <p align="center"><strong>POR LA EMPRESA</strong></p>
+              <div class="row bordered">
+                <div class="col-4"><strong>Presidente:</strong></div>
+                <div class="col-4"><strong>Gerencia de RRHH</strong></div>
+                <div class="col-4"><strong>Sello</strong></div>
+              </div>
+              <p align="center"><strong>EL(LA) CONTRATADO(A)</strong></p>
+              <div class="row bordered">
+                <div class="col-4"><strong>Firma autógrafa:</strong></div>
+                <div class="col-4"><strong>Fecha:</strong></div>
+                <div class="col-4"><strong>Hora:</strong></div>
+              </div>
+              <p align="center"><strong>Huellas dactilares del Contratado</strong></p>
+             
+             <div class="col-4 text-center">
+              <table class="table">
+                <tr style="line-height:6;" class="align-bottom">
+                  <td style="padding-top:40px;color:gray;">
+                    Izquierdo
+                  </td>
+                  <td style="padding-top:40px;color:gray;">
+                    Derecho
+                  </td>
+                </tr>
+                <tr style="background-color:gray;">
+                  <td colspan="2">
+                    Huellas
+                  </td>
+                </tr>
+              </table>
+          </div>
+      </t>
+
+
+      <t t-name="l10n_ve_payroll.template_contracto_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    
+                    <t t-call="l10n_ve_payroll.web_constancia_layout">
+                        
+                    
+                    <t t-if="o.is_indetermined">
+                        <t t-call="l10n_ve_payroll.template_contracto_indetermined"/>
+
+                    </t>
+                    <t t-if="o.is_labor_determined">
+                        <t t-call="l10n_ve_payroll.template_contracto_obra_determinada"/>
+
+                    </t>
+                    <t t-else="">
+                        <t t-call="l10n_ve_payroll.template_contracto_determined"/>
+                    </t>
+
+                        
+                </t>
+            </t> 
+            </t>
+        </t>
+
+    </t>
+    <!-- Your data records go here -->
+  </data>
+</odoo>

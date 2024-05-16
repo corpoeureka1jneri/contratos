@@ -1,0 +1,234 @@
+<t t-name="l10n_ve_payroll.template_contracto_document">
+    <t t-set="das" t-value="{'01':'Enero','02':'Febrero','03':'Marzo','04':'Abril','05':'Mayo','06':'Junio','07':'Julio','08':'Agosto','09':'Septiembre','10':'Octubre','11':'Noviembre','12':'Diciembre'} "/>
+                          <t t-set="yas" t-value="{0:'Lunes',1:'Martes',2:'Miercoles',3:'Jueves',4:'Viernes',5:'Sabado',6:'Domingo'} "/>
+              <t t-call="web.html_container">
+                  <t t-foreach="docs" t-as="o">
+                      <t t-call="l10n_ve_payroll.web_constancia_layout">
+                          <style>
+                              .boxed{
+                                  padding: 1% 10%;
+                                  text-align: justify;text-justify: inter-word;
+                                  justify-content: space-between;
+                              }
+                              
+                          </style>
+                          
+                              
+                          <div class="boxed  justify-content-between">
+                          <t t-if="o.is_indetermined">
+                              <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO INDETERMINADO'"/>
+                              <t t-set="titulo" t-value="'CONTRATO DE TRABAJO A TIEMPO INDETERMINADO'"/>
+                              <t t-set="articulo" t-value="'al artículo 61'"/>
+  
+                          </t>
+                          <t t-else="">
+                              <t t-set="dem_empleado" t-value="'TRABAJADOR A TIEMPO DETERMINADO'"/>
+                              <t t-set="titulo" t-value="'CONTRATO DE TRABAJO A TIEMPO DETERMINADO'"/>
+                              <t t-set="time_contract" t-value="'tiempo determinado'"/>
+                              <t t-set="articulo" t-value="'al literal “b” del artículo 64'"/>
+                              <t t-if="o.number_of_renovations&gt;0">
+                                  <t t-set="articulo" t-value="'al literal “d” artículo 62'"/>
+                              </t>
+                          </t>
+                          <t t-if="o.is_test">
+                              <p class="text-center"><strong t-esc="titulo"/></p>
+                          <br/>
+                          <t t-set="trabajador" t-value="'LA TRABAJADORA' if o.employee_id.gender=='female' else 'EL TRABAJADOR'"/>
+                          <p align="justify">
+                              <span t-field="o.company_id.city"/>, <span t-esc="str(o.date_start.day) + ' de ' + das.get(o.date_start.strftime('%m'),'') + ' del ' + str(o.date_start.year)"/> POR UNA PARTE:
+                              Entre la sociedad mercantil <strong t-field="o.company_id.name"/>, debidamente inscrita en el  <span t-field="o.company_id.registrofiscal"/>,
+                              p; quien en lo adelante se denominará el <strong>PATRONO</strong> y que está representada por el Ciudadano <strong>CARLOS NESTATO ARENAS DELGADO</strong>,
+                              Venezolano, mayor de edad,   titular de la cedula de identidad Nº V-3.430.154, en su carácter de Director, por una parte, y por la otra 
+                               <strong t-field="o.employee_id.name"/>,
+                              nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,
+                              titular de la cédula de identidad:<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                              mayor de edad, residenciado(a) en <span t-field="o.employee_id.address_id.street"/>
+                              para los efectos del presente contrato se denominará <strong t-esc="trabajador"/>, ambas partes de mutuo y común acuerdo han decidido celebrar el presente en celebrar un <strong>CONTRATO DE PRUEBA</strong>, 
+                              tal como lo establece el <strong>Artículo 64 de la Ley Orgánica del Trabajo, Los Trabajadores y Las Trabajadoras</strong>, sometido a las siguientes estipulaciones: 
+                              
+                          </p>
+                          <p align="justify">
+                              <strong>Primero: </strong> <strong t-esc="trabajador"/> se compromete a prestar sus servicios personales a <strong>LA EMPRESA</strong>, en el cargo de  <strong t-field="o.job_id.name"/> obligándose a desempeñar las funciones inherentes al cargo, funciones éstas que son enumeradas en la DESCRIPCION DE CARGO, 
+                          </p>
+                          <p align="justify">
+                              <strong>SEGUNDA: </strong> La jornada ordinaria de trabajo acordada entre las partes será de  (<strong t-field="o.resource_calendar_id.hours_per_day"/>) horas diarias de lunes a viernes, para un total de <strong t-field="o.resource_calendar_id.full_time_required_hours"/> horas, lo que equivale a <strong t-esc="o.resource_calendar_id.full_time_required_hours/o.resource_calendar_id.hours_per_day"/> días de trabajo semanales, teniendo derecho al disfrute de (<strong t-field="o.resource_calendar_id.rest_days"/>) días de descanso consecutivos durante cada semana de labor.
+                          </p>
+                          <p align="justify">
+                              <strong>TERCERA: </strong> La Jornada de trabajo será <t t-if="o.resource_calendar_id.check_jornada_diurna">diurna</t><t t-elif="o.resource_calendar_id.check_jornada_nocturna">nocturna</t><t t-elif="o.resource_calendar_id.check_jornada_mixta">mixta</t>
+                          </p>
+                          <p align="justify" t-field="o.job_id.description"/>
+                          <p align="justify">
+                              <strong>CUARTA:</strong> El monto mensual que devengará <strong t-esc="trabajador"/> es la cantidad de,
+                              <strong t-esc="o.numero_to_letras_contract(o.wage)"/> BOLIVARES (Bs.<strong t-esc="o.wage"/>), 
+                              Mensuales que <strong>LA EMPRESA</strong> se compromete a pagarle al <strong>ASPIRANTE.</strong>
+  
+                          </p>
+                          <p align="justify">
+                              <strong>QUINTA: </strong>El presente contrato a tiempo determinado tendrá una duración de <span t-esc="round((o.date_end-o.date_start).days/30)"/> meses, a partir del <span t-esc="o.date_start.strftime('%d/%m/%Y')"/>  hasta el <span t-esc="o.date_end.strftime('%d/%m/%Y') if o.date_end else ''"/>,
+                              y concluirá a la expiración de dicho término, a menos que <strong>EL PATRONO</strong> convenga, antes del vencimiento del plazo indicado en aceptarlo como trabajador regular, celebrar un nuevo contrato y/o Extinguir el presente contrato. La justificación del presente contrato 
+                              se justifica en los procesos de reestructuración, actualización y modernización de los procesos administrativos, operativos y funcionales del Departamento Seguridad Integral de la empresa,<strong t-field="o.company_id.name"/>
+                          </p>
+                          <p align="justify">
+                              <strong>SEXTA: </strong> El servicio se prestará en <strong><span t-field="o.employee_id.work_location_id.name"/>, <span t-field="o.employee_id.work_location_id.address_id.contact_address"/>
+                              </strong>
+                          </p>
+                          <p align="justify">
+                              <strong>SEPTIMA: </strong>Las partes se han obligado para un periodo determinado, quedando entendido que las obligaciones derivadas de la relación de trabajo serán únicas y exclusivamente por el periodo estipulado en la cláusula quinta del presente, 
+                              sin que por ello se pueda considerar que en algún momento se obligaron por tiempo indeterminado.
+                          </p>
+                          <p align="justify">
+                              <strong>OCTAVA:  LA EMPRESA</strong> se compromete en dotar al <strong>ASPIRANTE</strong> con los implementos necesarios para realizar su labor como: Uniformes, Botas, Guantes, Cascos, Lentes de seguridad, Mascarillas, Delantales, etc. 
+                              También hace entrega de un Manual donde se les explica las normas de Higiene y Seguridad a seguir por cada uno de los contratados.
+                          </p>
+                          <p align="justify">
+                              <strong>NOVENA:</strong> <strong t-esc="trabajador"/> se compromete a usar los equipos de Seguridad Industrial y seguir las Normas Implantadas por la Empresa, presentar todas las pruebas que le exija la  misma para probar su capacidad y habilidad en la labor que vaya a desempeñar.
+                          </p>
+                          <p align="justify">
+                              <strong>DECIMA:</strong> <strong t-esc="trabajador"/> ha sido instruida sobre sus deberes, derechos, beneficios de Carácter no salarial y obligaciones, así como también retenciones derivados de la relación laboral.
+                          </p>
+                          <p align="justify">
+                              <strong>DECIMA PRIMERA:</strong> Tendrán <strong>carácter salarial:</strong> Horas Extras Diurnas y Nocturnas, Bono de Producción, Bono Nocturno, Tiempo de Viaje, Sábados Laborados, Días de Descanso Laborado, Días Adicionales, Domingo, 
+                              Salario, Bono de Sobreproducción I, Bono de Sobreproducción II, Bono de Sobreproducción IIII, Bono Único; <strong>No tendrán Carácter Salarial:</strong> Reembolsos por Gastos Médicos y Farmacéuticos, Guardería, 
+                              Beca, Prima por Póliza de HCM, Prima por Póliza de Vida y Accidentes Personales, Beneficio de Alimentación, provisiones de uniformes y equipos de protección personal, beneficio de alimentación, gastos funerarios, 
+                              primas por nacimiento, primas por matrimonio, montepío, provisión de útiles escolares y ropa y juguetes para los hijos de los trabajadores, y cualquier otro concepto que sea estipulado por la LOTTT como de carácter no salarial y la Convención Colectiva de Trabajo, así como también los acuerdos colectivos de trabajo suscrita por la empresa    
+                          </p>
+                          <p align="justify">
+                              <strong>DECIMA SEGUNDO:</strong> Durante la duración del presente contrato cualquiera de una de las partes podrá dar por extinguido el contrato sin que ello genere indemnización alguna y sin necesidad de notificar previamente.
+                          </p>
+                          
+                          <BR/>
+                          <p align="justify">Se hacen dos (2) ejemplares de un mismo tenor y para un solo efecto, En <span t-field="o.company_id.city"/>,<span t-esc="str(datetime.date.today().day) + ' de ' + das.get(datetime.date.today().strftime('%m'),'' ) + ' del ' + str(datetime.date.today().year)"/></p>
+  
+  
+                          </t>
+                          <t t-else="">
+                              <p class="text-center"><span t-esc="titulo"/></p>
+                          <br/>
+                          <p align="justify">
+                              <span t-field="o.company_id.city"/>,<span t-esc="str(o.date_start.day) + ' de ' + das.get(o.date_start.strftime('%m'),'') + ' del ' + str(o.date_start.year)"/> POR UNA PARTE:
+                              La sociedad mercantil <strong t-field="o.company_id.name"/>, debidamente inscrita en el  <span t-field="o.company_id.registrofiscal"/>,
+                              p; quien en lo adelante se denominará el <strong>PATRONO</strong> y que está representada por el Ciudadano <strong>CARLOS NESTATO ARENAS DELGADO</strong>,
+                              Venezolano, mayor de edad, titular de la cedula de identidad Nº V-3.430.154, en su carácter de Director, por una parte, y por la otra 
+                              <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                              nacionalidad <t t-if="o.employee_id.nationality=='V'"> Venezolana</t><t t-else="">Extranjera</t>,mayor de edad,
+                              titular de la cédula de identidad:<span> </span><strong t-field="o.employee_id.identification_id_2"/>,
+                              a todos los efectos será considerado en su calidad de vendedor de la empresa, se ha convenido en
+                              <strong>en celebrar el presente contrato con fundamento en el artículo 64 Ley Orgánica del Trabajo, Las Trabajadoras y Los Trabajadores</strong>,
+                              el cual se regirá por las siguientes cláusulas: 
+                              
+                          </p>
+                          <p align="justify">
+                              <strong>PRIMERA: </strong> Las partes acuerdan celebrar en este acto, como en efecto celebran, un contrato de trabajo a tiempo determinado, 
+                              conforme lo prevé el artículo 64 de la LOTTT, específicamente en su literal “a”, a los fines, de cubrir el éxodo de la demanda de venta de pinturas, 
+                              durante los meses de <span t-esc="das.get(str(o.date_start.month))"/> a <span t-esc="das.get(str(o.date_end.month)) if o.date_end else ''"/>, meses de disminución en la demanda de pintura. En tal sentido <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                              se compromete a cubrir la demanda de ventas de pintura durante los meses de <span t-esc="das.get(o.date_start.strftime('%m'),'')"/> a <span t-esc="das.get(o.date_end.strftime('%m'),'') if o.date_end else ''"/> y en consecuencia vender sus artículos o productos sin excepción, dentro de la zona de <strong t-field="o.employee_id.state_id.name"/>
+                          </p>
+                          <p align="justify">
+                              <strong>SEGUNDA: </strong> <t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                              se desempeñará como vendedor exclusivo de la empresa, no pudiendo por tanto representar a otras empresas.
+                          </p>
+                          <p align="justify">
+                              <strong>TERCERA: </strong><t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                              deberá observar en su trabajo las directivas e instrucciones de la empresa y está sujeto a los derechos y obligaciones correspondientes a su condición de empleado de la empresa. 
+                          </p>
+                          <p align="justify" t-field="o.job_id.description"/>
+                          <p align="justify">
+                              <strong>CUARTA: </strong><t t-if="o.employee_id.gender=='female'"> la Ciudadana</t><t t-else=""> el Ciudadano </t> <strong t-field="o.employee_id.name"/>,
+                              percibirá por sus servicios las siguientes retribuciones: 
+                              Salario Básico: la cantidad de <span t-esc="o.numero_to_letras_contract(o.wage)"/> BOLIVARES (Bs.<span t-esc="o.wage"/>), más los beneficios de Ley y Contractuales,
+                              sin embargo en virtud de la naturaleza del cargo el trabajador estará excluido de la aplicación de los siguientes Beneficios derivado de la Convención Colectiva de trabajo y los beneficios acordados en la mesa de trabajo tales como:
+                              <strong>PRODUCTO LACTEO, BONO SUSTITUTIVO DE LA ASISTENCIA PERFECTA, BONO COMPLEMENTARIO DEL SALARIO </strong>y aquellos que impliquen el cumplimiento riguroso del horario de trabajo, lo cual el trabajador no estará sometido a un cumplimiento estricto de un jornada de trabajo. 
+                              En razón de ello,  y en sustitución de los mencionados beneficios el trabajador devengará  comisiones por Ventas y Cobranza, cuyo monto y porcentaje será definido por la Junta directiva de la empresa, lo cual, el beneficio aquí acordado supera los beneficios aquí sustituidos.
+                              
+                          </p>
+                          <p align="justify">
+                              <strong>QUINTA: </strong>Las partes acurdan que de manera excepcional mientras la Vendedora realice el conocimiento de la zona de <strong t-field="o.employee_id.state_id.name"/> para la realización de sus labores durante los primeros cuatro meses, le será pagado la cantidad de
+                              <span t-esc="o.numero_to_letras_contract(round(o.complemento,2))"/> (<span t-esc="round(o.complemento,2)"/>) en el entendido que este no constituye su salario básica, sino un reconocimiento de la empresa imputable a sus comisiones.
+                          </p>
+                          <p align="justify">
+                              <strong>SEXTA: </strong>Las partes acuerdan que la duración del presente contrato será 
+                              <strong>desde <span t-esc="o.date_start.strftime('el %d de ')"/><span t-esc="das[o.date_start.strftime('%m')]"/><span t-esc="o.date_start.strftime(' del año %Y')"/> al
+                              <span t-esc="o.date_end.strftime('el %d de ') if o.date_end else ''"/><span t-esc="das[o.date_end.strftime('%m')] if o.date_end else ''"/><span t-esc="o.date_end.strftime(' del año %Y') if o.date_end else ''"/>
+                              </strong>
+                          </p>
+                          <p align="justify">
+                              <strong>SEPTIMA: </strong> El servicio se prestará en <strong><span t-field="o.employee_id.address_id.name"/>, <span t-field="o.employee_id.address_id.contact_address"/>
+                              </strong>
+                          </p>
+                          <p align="justify">
+                              <strong>OCTAVA: EL TRABAJADOR</strong> ha sido instruido sobre sus deberes, derechos, beneficios de Carácter no salarial y obligaciones, así como también retenciones derivados de la relación laboral.
+                          </p>
+                          
+                          <BR/>
+                          <p align="justify">Se hacen dos (2) ejemplares de un mismo tenor y para un solo efecto, En <span t-field="o.company_id.city"/>,<span t-esc="'a los ' + str(datetime.date.today().day) + ' días del mes de ' + das.get(datetime.date.today().strftime('%m'),'') + ' del ' + str(datetime.date.today().year)"/></p>
+  
+  
+                          </t>
+                              <div class="row">
+                                <div class="col-6">
+                                  La empresa o su representante
+                                </div>
+                                <div class="col-6 text-end">
+                                  <p>El trabajador</p>
+                                  <p><strong t-field="o.employee_id.name"/></p>
+                                  <p><strong t-field="o.employee_id.identification_id_2"/></p>
+                                </div>
+                              </div>
+                          
+  
+                      </div>
+                      
+                  </t> 
+                  </t>
+              </t>
+  
+          </t>
+
+          <t name="constancia_layout" t-name="l10n_ve_payroll.web_constancia_layout">
+            <t t-if="company">
+            
+            </t>
+            <t t-else="">
+              <t t-set="company" t-value="env.company"/>
+            </t>
+              <div class="header">
+
+                  <t t-if="not isinstance(o,dict)">
+                    <div class="row" style="report_header_style">
+  
+                                <div class="col-8 text-start">
+                                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="padding-left:90px; margin-top:10px;max-width:300px;max-height:150px;"/>
+        
+                                </div>
+                                <div class="col-4 text-end">
+                                    <span t-field="o.inherit_contract_code"/>
+                                </div>
+        
+                    </div>
+                  </t>
+                  <t t-else="">
+                    <div class="row" style="report_header_style">
+                                <div class="col-12 text-start">
+                                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="padding-left:90px; margin-top:10px;max-width:300px;max-height:150px;"/>
+                                </div>
+                    </div>
+                  </t>
+              </div>
+              <div class="article o_report_layout_standard">
+                  <t t-out="0"/>
+              </div>
+              <div class="o_standard_footer footer" style="padding:0px 90px;">
+                  <div class="row">
+                      <div class="col-8 text-center">
+                          <a t-attf-href=" # {company.website}" t-esc="company.website"/> <span style="font-size: 0.9rem;" t-esc="company.street"/> <span style="font-size: 0.9rem;" t-esc="company.street2"/>- <span style="font-size: 0.9rem;" t-esc="company.email"/> <span style="font-size: 0.9rem;" t-esc="company.phone"/>
+                      </div>
+                      <div class="col-4 text-end">
+                          <t t-if="not isinstance(o,dict)">
+                            <span t-field="o.inherit_contract_code"/>
+                          </t>
+                      </div>
+                  </div>
+              </div>
+                  
+                
+        </t>
